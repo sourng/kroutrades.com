@@ -22,7 +22,7 @@
 
                <div id="cart-block" class="col-xs-5 col-sm-2 shopping-cart-box">     
                 
-                <a class="cart-link" href="order.html" id="count_cart">
+                <a class="cart-link" href="<?php echo base_url(); ?>cart" id="count_cart">
                     <span class="title">Shopping cart</span>
                     <span class="total"><?php echo count($this->cart->contents())?> items - <?php echo number_format($this->cart->total(),2); ?> $</span>
                     <span class="notify notify-left"><?php echo count($this->cart->contents()); ?></span>
