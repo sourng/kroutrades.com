@@ -145,7 +145,7 @@ class Front extends CI_Controller{
                                         <button type="button" id="'. $items['rowid'] .'" class="romove_cart btn btn-danger btn-sm remove_link" style="color:white; border-radius: 0px;">Cancel</button>
 
                                         <a href="#">
-                                        <img class="img-responsive" src="'. base_url() .'uploads/products/'. $items['img'] .'" alt="'. $items['img'] .'">
+                                        <img class="img-responsive" src="'. base_url() .'uploads/product_features/'. $items['img'] .'" alt="'. $items['img'] .'">
                                         </a>
                                     </div>
                                     <div class="p-right">
