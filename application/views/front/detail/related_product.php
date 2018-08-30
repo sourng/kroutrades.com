@@ -9,7 +9,7 @@
                                     <div class="product-container">
                                         <div class="left-block">
                                             <a href="<?php echo site_url();?>detail/<?php echo $rows['pro_id']; ?>">
-                                                <img class="img-responsive" alt="product" src="http://175.100.31.84/bookshop/admin/public/images/product_features/<?php echo $rows['pro_feature']; ?>" />
+                                                <img class="img-responsive" alt="product" src="<?php echo base_url(); ?>uploads/product_features/<?php echo $rows['pro_feature']; ?>" />
                                             </a>
                                             <div class="quick-view">
                                                     <a title="Add to my wishlist" class="heart" href="#"></a>

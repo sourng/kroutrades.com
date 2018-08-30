@@ -1,0 +1,108 @@
+<style type="text/css">
+    .pddb20 {
+        padding-bottom: 20px;
+    }
+
+    .pddt20 {
+        padding-bottom: 20px;
+    }
+
+    .img {
+        width: 100%;
+        height: 100px;
+        margin: 0.2em -0.7em 0 0;
+    }
+
+    .remove_img_preview {
+       position: relative;
+        bottom: 95px;
+        right: -80px;
+        background: #ffffff9e;
+        color: #b50707;
+        border-radius: 50px;
+        font-size: 15px;
+        padding: 0 5px 0;
+        text-align: center;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .remove_img_preview:before {
+        content: "×";
+    }
+
+     .hidden{
+        display: none;
+     }
+   
+</style>
+
+<?php echo form_open('admin/category/add/save' , array('id' => 'form','class' => 'form-horizontal validatable','target'=>'_top', 'enctype' => 'multipart/form-data'));?>
+
+<section class="panel">
+    <!-- <header class="panel-heading">
+                                        <div class="panel-actions">
+                                            <a href="#" class="fa fa-caret-down"></a>
+                                            <a href="#" class="fa fa-times"></a>
+                                        </div>
+
+                                        <h2 class="panel-title">Basic Form Validation</h2>
+                                        <p class="panel-subtitle">
+                                            Basic validation will display a label with the error after the form control.
+                                        </p>
+                                    </header> -->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Category Name <span class="required">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" name="category_name" class="form-control" required/>
+                                 <div class="pddb20"></div>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+          
+
+            <div class="col-md-12">
+
+                <div class="pddt20"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Icon <span class="required">*</span></label>
+                    <div class="col-sm-8">
+                        <input type="text" id="category_icon" name="category_icon" class="form-control" required/>
+                    </div>
+
+                    <div class="col-sm-2">
+                       <div id="icon_view"></div>
+                    </div>
+                </div>
+                <div class="pddb20"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="panel-footer">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="pull-left">
+                    <a href="<?php echo site_url() ?>admin/category/list/active" class="btn btn-default">Back</a>
+                </div>
+                <div class="pull-right">
+                    <input type="hidden" name="save-type" id="save-type">
+                    <button type="reset" class="btn btn-default">Reset</button>
+                    <button type="submit" id="btn-save-new" class="btn btn-primary">Save New</button>
+                    <button class="btn btn-primary" id="btn-save-close">Save Close</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+</section>
+<?php echo form_close();?>

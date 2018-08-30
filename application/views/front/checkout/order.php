@@ -45,7 +45,7 @@ header("location: login");
 
    
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <link href="<?php echo base_url(); ?>public/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- <link href='//fonts.googleapis.com/css?family=Fugaz+One' rel='stylesheet' type='text/css'> -->
@@ -63,7 +63,7 @@ header("location: login");
     <!--/.top-header -->
     <!-- MAIN HEADER -->
     
-	<?php $this->load->view('include/main_header'); ?>
+    <?php $this->load->view('include/main_header'); ?>
     <!-- END MANIN HEADER -->
     
 
@@ -102,8 +102,8 @@ header("location: login");
             <div> 
                 <div id="step-1" class=""> 
                      <div class="heading-counter warning" style="padding: 15px;">Your shopping cart contains:
-                			<span style="color:white; background-color:#FF4523; padding: 8px;"> 1 </span> Product
-            		</div>
+                            <span style="color:white; background-color:#FF4523; padding: 8px;"> 1 </span> Product
+                    </div>
 
             <div class="order-detail-content" style="width: 100%;
     overflow-x: scroll; padding-right:25px;">
@@ -120,11 +120,11 @@ header("location: login");
                         </tr>
                     </thead>
                     <tbody>
-                    		<?php foreach ($this->cart->contents() as $items): ?>
+                            <?php foreach ($this->cart->contents() as $items): ?>
 
                         <tr>
                             <td class="cart_product">
-                                <a href="#"><img src="http://175.100.31.84/bookshop/admin/public/images/product_features/<?php echo $items['img']; ?>" alt="Product"></a>
+                                <a href="#"><img src="<?php echo base_url() ?>uploads/product_features/<?php echo $items['img']; ?>" alt="Product"></a>
                             </td>
                             <td class="cart_description">
                                 <p class="product-name"><a href="#"><?php echo $items['name']; ?></a></p>
@@ -156,7 +156,7 @@ header("location: login");
                             </td>
                         </tr>
 
-                    	<?php endforeach; ?>
+                        <?php endforeach; ?>
 
                     </tbody>
                     <tfoot>
@@ -221,81 +221,81 @@ header("location: login");
                       <!-- Card Process -->
 
                       <div>
-			
-			
-						<div class="sap_tabs">
-							<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-								<div class="pay-tabs">
-									<h2>Select Payment Method</h2>
-									  <ul class="resp-tabs-list">
-										  <li onclick="order_pay('Credit Card');" class="resp-tab-item" aria-controls="tab_item-0" role="tab" style="height: 50px;"><span><label class="pic1"></label>Credit Card</span></li>
+            
+            
+                        <div class="sap_tabs">
+                            <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                                <div class="pay-tabs">
+                                    <h2>Select Payment Method</h2>
+                                      <ul class="resp-tabs-list">
+                                          <li onclick="order_pay('Credit Card');" class="resp-tab-item" aria-controls="tab_item-0" role="tab" style="height: 50px;"><span><label class="pic1"></label>Credit Card</span></li>
 
-										  <li onclick="order_pay('Net Banking');" class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span><label class="pic3"></label>Net Banking</span></li>
-										 <!--  <li onclick="order_pay('PayPal');" class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span><label class="pic4"></label>PayPal</span></li>  -->
-										  <li onclick="order_pay('Debit Card');" class="resp-tab-item" aria-controls="tab_item-3" role="tab"><span><label class="pic2"></label>Debit Card</span></li>
-										  <div class="clear"></div>
-									  </ul>	
-								</div>
+                                          <li onclick="order_pay('Net Banking');" class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span><label class="pic3"></label>Net Banking</span></li>
+                                         <!--  <li onclick="order_pay('PayPal');" class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span><label class="pic4"></label>PayPal</span></li>  -->
+                                          <li onclick="order_pay('Debit Card');" class="resp-tab-item" aria-controls="tab_item-3" role="tab"><span><label class="pic2"></label>Debit Card</span></li>
+                                          <div class="clear"></div>
+                                      </ul> 
+                                </div>
 
                                 <form id="form-order" action="<?php echo site_url() ?>cart/order" method="POST">
 
                                     <input type="hidden" value="Credit Card" name="order_pay" id="order_pay">
 
-								<div class="resp-tabs-container">
-									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-										<div class="payment-info">
-											<h3>Personal Information</h3>
-										
-												<div class="tab-for">				
-													<h5>EMAIL ADDRESS</h5>
-														<input type="text"  name="c_email_address">
-													<h5>FIRST NAME</h5>													
-														<input type="text"  name="c_first_name">
-												</div>			
-											
-											<h3 class="pay-title">Credit Card Info</h3>
-											
-												<div class="tab-for">				
-													<h5>NAME ON CARD</h5>
-														<input type="text"  name="c_name_on_card">
-													<h5>CARD NUMBER</h5>													
-														<input class="pay-logo" type="text" value="0000-0000-0000-0000" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}" required="" name="c_card_number">
-												</div>	
-												<div class="transaction">
-													<div class="tab-form-left user-form">
-														<h5>EXPIRATION</h5>
-															<ul>
-																<li>
-																	<input type="number" class="text_box" type="text" value="6" min="1" name="c_card_expiration" />	
-																</li>
-																<li>
-																	<input type="number" class="text_box" type="text" value="1988" min="1" name="c_year" />	
-																</li>
-																
-															</ul>
-													</div>
-													<div class="tab-form-right user-form-rt">
-														<h5>CVV NUMBER</h5>													
-														<input type="text" value="xxxx" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="" name="c_cvv_number">
-													</div>
-													<div class="clear"></div>
-												</div>
-												<input type="submit" value="SUBMIT">
-											
-											<div class="single-bottom">
-													<ul>
-														<li>
-															<input type="checkbox"  id="brand" value="">
-															<label for="brand"><span></span>By checking this box, I agree to the Terms & Conditions & Privacy Policy.</label>
-														</li>
-													</ul>
-											</div>
-										</div>
-									</div>
-									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-										<div class="payment-info">
-											<h3>Net Banking</h3>
-											<div class="radio-btns">
+                                <div class="resp-tabs-container">
+                                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                                        <div class="payment-info">
+                                            <h3>Personal Information</h3>
+                                        
+                                                <div class="tab-for">               
+                                                    <h5>EMAIL ADDRESS</h5>
+                                                        <input type="text"  name="c_email_address" id="c_email_address" >
+                                                    <h5>FIRST NAME</h5>                                                 
+                                                        <input type="text"  name="c_first_name" id="c_first_name">
+                                                </div>          
+                                            
+                                            <h3 class="pay-title">Credit Card Info</h3>
+                                            
+                                                <div class="tab-for">               
+                                                    <h5>NAME ON CARD</h5>
+                                                        <input type="text"  name="c_name_on_card" id="c_name_on_card">
+                                                    <h5>CARD NUMBER</h5>                                                    
+                                                        <input class="pay-logo" type="text" value="0000-0000-0000-0000" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}" required="" name="c_card_number" id="c_card_number">
+                                                </div>  
+                                                <div class="transaction">
+                                                    <div class="tab-form-left user-form">
+                                                        <h5>EXPIRATION</h5>
+                                                            <ul>
+                                                                <li>
+                                                                    <input type="number" class="text_box" type="text" value="6" min="1" name="c_card_expiration" id="c_card_expiration" />  
+                                                                </li>
+                                                                <li>
+                                                                    <input type="number" class="text_box" type="text" value="1988" min="1" name="c_year" id="c_year" /> 
+                                                                </li>
+                                                                
+                                                            </ul>
+                                                    </div>
+                                                    <div class="tab-form-right user-form-rt">
+                                                        <h5>CVV NUMBER</h5>                                                 
+                                                        <input type="text" value="xxxx" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="" name="c_cvv_number" id="c_cvv_number">
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                                <input type="submit" value="SUBMIT">
+                                            
+                                            <div class="single-bottom">
+                                                    <ul>
+                                                        <li>
+                                                            <input type="checkbox"  id="brand" value="">
+                                                            <label for="brand"><span></span>By checking this box, I agree to the Terms & Conditions & Privacy Policy.</label>
+                                                        </li>
+                                                    </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+                                        <div class="payment-info">
+                                            <h3>Net Banking</h3>
+                                            <div class="radio-btns">
                                                 <div class="swit">
                                                     <div class="check_box">
                                                         <div class="radio"> <label><input onclick="net_bank('Andhra Bank');" type="radio" name="radio" checked=""><i></i>Andhra Bank</label> </div>
@@ -364,90 +364,90 @@ header("location: login");
 
                                                     <input type="hidden" id="net_banking" name="net_banking" value="Andhra Bank">
                                                 </div>
-											<a href="#">Continue</a>
-										</div>
-									</div>
-								<!-- 	<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
-										<div class="payment-info">
-											<h3>PayPal</h3>
-											<h4>Already Have A PayPal Account?</h4>
-											<div class="login-tab">
-												<div class="user-login">
-													<h2>Login</h2>
-													
-													<form>
-														<input type="text" value="name@email.com" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'name@email.com';}" required="">
-														<input type="password" value="PASSWORD" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}" required="">
-															<div class="user-grids">
-																<div class="user-left">
-																	<div class="single-bottom">
-																			<ul>
-																				<li>
-																					<input type="checkbox"  id="brand1" value="">
-																					<label for="brand1"><span></span>Remember me?</label>
-																				</li>
-																			</ul>
-																	</div>
-																</div>
-																<div class="user-right">
-																	<input type="submit" value="LOGIN">
-																</div>
-																<div class="clear"></div>
-															</div>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div> -->
-									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">	
-										<div class="payment-info">
-											
-											<h3 class="pay-title">Dedit Card Info</h3>
-										
-												<div class="tab-for">				
-													<h5>NAME ON CARD</h5>
-														<input type="text" value="" name="d_name_on_card">
-													<h5>CARD NUMBER</h5>													
-														<input class="pay-logo" type="text" value="0000-0000-0000-0000" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}" required="" name="d_card_number">
-												</div>	
-												<div class="transaction">
-													<div class="tab-form-left user-form">
-														<h5>EXPIRATION</h5>
-															<ul>
-																<li>
-																	<input type="number" class="text_box" type="text" value="6" min="1" name="d_card_expiration" />	
-																</li>
-																<li>
-																	<input type="number" class="text_box" type="text" value="1988" min="1" name="d_year" />	
-																</li>
-																
-															</ul>
-													</div>
-													<div class="tab-form-right user-form-rt">
-														<h5>CVV NUMBER</h5>													
-														<input type="text" value="xxxx" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="" name="d_cvv_number">
-													</div>
-													<div class="clear"></div>
-												</div>
-												<input type="submit" value="SUBMIT">
-											
-											<div class="single-bottom">
-													<ul>
-														<li>
-															<input type="checkbox"  id="brand" value="">
-															<label for="brand"><span></span>By checking this box, I agree to the Terms & Conditions & Privacy Policy.</label>
-														</li>
-													</ul>
-											</div>
-										</div>	
-									</div>
-								</div>	
+                                            <a href="#">Continue</a>
+                                        </div>
+                                    </div>
+                                <!--    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
+                                        <div class="payment-info">
+                                            <h3>PayPal</h3>
+                                            <h4>Already Have A PayPal Account?</h4>
+                                            <div class="login-tab">
+                                                <div class="user-login">
+                                                    <h2>Login</h2>
+                                                    
+                                                    <form>
+                                                        <input type="text" value="name@email.com" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'name@email.com';}" required="">
+                                                        <input type="password" value="PASSWORD" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}" required="">
+                                                            <div class="user-grids">
+                                                                <div class="user-left">
+                                                                    <div class="single-bottom">
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <input type="checkbox"  id="brand1" value="">
+                                                                                    <label for="brand1"><span></span>Remember me?</label>
+                                                                                </li>
+                                                                            </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="user-right">
+                                                                    <input type="submit" value="LOGIN">
+                                                                </div>
+                                                                <div class="clear"></div>
+                                                            </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">   
+                                        <div class="payment-info">
+                                            
+                                            <h3 class="pay-title">Dedit Card Info</h3>
+                                        
+                                                <div class="tab-for">               
+                                                    <h5>NAME ON CARD</h5>
+                                                        <input type="text" value="" name="d_name_on_card" id="d_name_on_card">
+                                                    <h5>CARD NUMBER</h5>                                                    
+                                                        <input class="pay-logo" type="text" value="0000-0000-0000-0000" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}" required="" name="d_card_number" id="d_card_number">
+                                                </div>  
+                                                <div class="transaction">
+                                                    <div class="tab-form-left user-form">
+                                                        <h5>EXPIRATION</h5>
+                                                            <ul>
+                                                                <li>
+                                                                    <input type="number" class="text_box" type="text" value="6" min="1" name="d_card_expiration" id="d_card_expiration" />  
+                                                                </li>
+                                                                <li>
+                                                                    <input type="number" class="text_box" type="text" value="1988" min="1" name="d_year" id="d_year" /> 
+                                                                </li>
+                                                                
+                                                            </ul>
+                                                    </div>
+                                                    <div class="tab-form-right user-form-rt">
+                                                        <h5>CVV NUMBER</h5>                                                 
+                                                        <input type="text" value="xxxx" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="" name="d_cvv_number" id="d_cvv_number">
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                                <input type="submit" value="SUBMIT">
+                                            
+                                            <div class="single-bottom">
+                                                    <ul>
+                                                        <li>
+                                                            <input type="checkbox"  id="brand" value="">
+                                                            <label for="brand"><span></span>By checking this box, I agree to the Terms & Conditions & Privacy Policy.</label>
+                                                        </li>
+                                                    </ul>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </div>  
 
                             </form>
-							</div>
-						</div>	
+                            </div>
+                        </div>  
 
-		</div>
+        </div>
 
                       <!-- End Card Process -->
                 </div> 
@@ -488,20 +488,20 @@ header("location: login");
  -->
 
  <?php 
-	$this->load->view('include/footer_script_home');
+    $this->load->view('include/footer_script_home');
 ?>
 
 <script src="<?php echo base_url(); ?>public/js/easyResponsiveTabs.js" type="text/javascript"></script>
-					<script type="text/javascript">
-						$(document).ready(function () {
-							$('#horizontalTab').easyResponsiveTabs({
-								type: 'default', //Types: default, vertical, accordion           
-								width: 'auto', //auto or any width like 600px
-								fit: true   // 100% fit in a container
-							});
-						});
-						
-					</script>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#horizontalTab').easyResponsiveTabs({
+                                type: 'default', //Types: default, vertical, accordion           
+                                width: 'auto', //auto or any width like 600px
+                                fit: true   // 100% fit in a container
+                            });
+                        });
+                        
+                    </script>
 
 
 <!-- Include SmartWizard JavaScript source -->
@@ -517,13 +517,14 @@ header("location: login");
                     toolbarSettings: {toolbarPosition: 'both',
                                       toolbarExtraButtons: [
                                             {label: 'Finish', css: 'btn-info', onClick: function(){ 
-                                            		alert('Finish Clicked'); 
-                                                    $('form#form-order').submit();
-                                            	}
-                                        	},
+                                                    //alert('Finish Clicked'); 
+                                                    //$('form#form-order').submit();
+                                                    check_order_pay();
+                                                }
+                                            },
                                             {
-                                            	label: 'Cancel', css: 'btn-danger', onClick: function(){ 
-                                            		$('#smartwizard').smartWizard("reset"); }
+                                                label: 'Cancel', css: 'btn-danger', onClick: function(){ 
+                                                    $('#smartwizard').smartWizard("reset"); }
                                             }
                                         ]
                                     }
@@ -556,27 +557,27 @@ header("location: login");
             });
 
         //    function updateproduct(rowid)
-		// 	{
-		// 		alert("Hello"); 
-		// 	var qty = $('.qty'+rowid).val();
-		// 	var price = $('.price'+rowid).text();
-		// 	var subtotal = $('.subtotal'+rowid).text();
-		// 	    $.ajax({
-		// 	            type: "POST",
-		// 	            url: "<?php //echo site_url('shopping/update_cart');?>",
-		// 	            data: "rowid="+rowid+"&qty="+qty+"&price="+price+"&subtotal="+subtotal,
-		// 	            success: function (response) {
-		// 	                    $('.subtotal'+rowid).text(response);
-		// 	                    var total = 0;
-		// 	                    $('.subtotal').each(function(){
-		// 	                        total += parseFloat($(this).text());
-		// 	                        $('.grandtotal').text(total);
-		// 	                    });    
+        //  {
+        //      alert("Hello"); 
+        //  var qty = $('.qty'+rowid).val();
+        //  var price = $('.price'+rowid).text();
+        //  var subtotal = $('.subtotal'+rowid).text();
+        //      $.ajax({
+        //              type: "POST",
+        //              url: "<?php //echo site_url('shopping/update_cart');?>",
+        //              data: "rowid="+rowid+"&qty="+qty+"&price="+price+"&subtotal="+subtotal,
+        //              success: function (response) {
+        //                      $('.subtotal'+rowid).text(response);
+        //                      var total = 0;
+        //                      $('.subtotal').each(function(){
+        //                          total += parseFloat($(this).text());
+        //                          $('.grandtotal').text(total);
+        //                      });    
 
-		// 	                   alert("Hello"); 
-		// 	            }
-		// 	        });
-		// 	}
+        //                     alert("Hello"); 
+        //              }
+        //          });
+        //  }
             
         });  
 
@@ -679,8 +680,103 @@ function net_bank(net='')
 {
   $('#net_banking').val(net);
 }
+function check_order_pay() {
+    var order_pay = $('#order_pay').val();
 
 
+    var c_email_address = $('#c_email_address').val();
+    var c_first_name = $('#c_first_name').val();
+    var c_name_on_card = $('#c_name_on_card').val();
+    var c_card_number = $('#c_card_number').val();
+    var c_card_expiration = $('#c_card_expiration').val();
+    var c_cvv_number = $('#c_cvv_number').val();
+    var c_year = $('#c_year').val();
+
+    var d_name_on_card = $('#d_name_on_card').val();
+    var d_card_number = $('#d_card_number').val();
+    var d_card_expiration = $('#d_card_expiration').val();
+    var d_cvv_number = $('#d_cvv_number').val();
+    var d_year = $('#d_year').val();
+
+
+
+    if (order_pay == 'Credit Card') {
+
+        if (c_email_address == '') {
+
+            $('#c_email_address').css('border', 'solid 1px #f00');
+            $('#c_email_address').focus();
+
+        } else if (c_first_name == '') {
+
+            $('#c_first_name').css('border', 'solid 1px #f00');
+            $('#c_first_name').focus();
+
+        } else if (c_name_on_card == '') {
+
+            $('#c_name_on_card').css('border', 'solid 1px #f00');
+            $('#c_name_on_card').focus();
+
+        } else if (c_card_number == '') {
+
+            $('#c_card_number').css('border', 'solid 1px #f00');
+            $('#c_card_number').focus();
+
+        }else if (c_card_expiration == '') {
+
+                $('#c_card_expiration').css('border', 'solid 1px #f00');
+                $('#c_card_expiration').focus();
+
+        } else if (c_cvv_number == '') {
+
+                $('#c_cvv_number').css('border', 'solid 1px #f00');
+                $('#c_cvv_number').focus();
+
+        } else if (c_year == '') {
+
+                $('#c_year').css('border', 'solid 1px #f00');
+                $('#c_year').focus();
+
+         } else {
+                alert('not empty');
+        }
+
+    } else if (order_pay == 'Net Banking') {
+
+    } else if (order_pay == 'Debit Card') {
+
+            if (d_name_on_card == '') {
+
+                $('#d_name_on_card').css('border', 'solid 1px #f00');
+                $('#d_name_on_card').focus();
+
+            } else if (d_card_number == '') {
+
+                $('#d_card_number').css('border', 'solid 1px #f00');
+                $('#d_card_number').focus();
+
+            } else if (d_card_expiration == '') {
+
+                $('#d_card_expiration').css('border', 'solid 1px #f00');
+                $('#d_card_expiration').focus();
+
+            } else if (d_cvv_number == '') {
+
+                $('#d_cvv_number').css('border', 'solid 1px #f00');
+                $('#d_cvv_number').focus();
+
+            } else if (d_year == '') {
+
+                $('#d_year').css('border', 'solid 1px #f00');
+                $('#d_year').focus();
+
+            } else {
+                alert('not empty');
+            }
+
+        }
+    
+}
 
 
     </script>  
