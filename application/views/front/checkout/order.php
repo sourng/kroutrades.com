@@ -518,7 +518,7 @@ header("location: login");
                                       toolbarExtraButtons: [
                                             {label: 'Finish', css: 'btn-info', onClick: function(){ 
                                                     //alert('Finish Clicked'); 
-                                                    //$('form#form-order').submit();
+                                                    
                                                     check_order_pay();
                                                 }
                                             },
@@ -717,7 +717,7 @@ function check_order_pay() {
             $('#c_name_on_card').css('border', 'solid 1px #f00');
             $('#c_name_on_card').focus();
 
-        } else if (c_card_number == '') {
+        } else if (c_card_number == '' || c_card_number =='0000-0000-0000-0000') {
 
             $('#c_card_number').css('border', 'solid 1px #f00');
             $('#c_card_number').focus();
@@ -727,7 +727,7 @@ function check_order_pay() {
                 $('#c_card_expiration').css('border', 'solid 1px #f00');
                 $('#c_card_expiration').focus();
 
-        } else if (c_cvv_number == '') {
+        } else if (c_cvv_number == '' || c_cvv_number =='xxxx') {
 
                 $('#c_cvv_number').css('border', 'solid 1px #f00');
                 $('#c_cvv_number').focus();
@@ -738,10 +738,12 @@ function check_order_pay() {
                 $('#c_year').focus();
 
          } else {
-                alert('not empty');
+               $('form#form-order').submit();
         }
 
     } else if (order_pay == 'Net Banking') {
+        
+        $('form#form-order').submit();
 
     } else if (order_pay == 'Debit Card') {
 
@@ -750,7 +752,7 @@ function check_order_pay() {
                 $('#d_name_on_card').css('border', 'solid 1px #f00');
                 $('#d_name_on_card').focus();
 
-            } else if (d_card_number == '') {
+            } else if (d_card_number == '' || d_card_number =='0000-0000-0000-0000') {
 
                 $('#d_card_number').css('border', 'solid 1px #f00');
                 $('#d_card_number').focus();
@@ -760,7 +762,7 @@ function check_order_pay() {
                 $('#d_card_expiration').css('border', 'solid 1px #f00');
                 $('#d_card_expiration').focus();
 
-            } else if (d_cvv_number == '') {
+            } else if (d_cvv_number == ''  || d_cvv_number =='xxxx') {
 
                 $('#d_cvv_number').css('border', 'solid 1px #f00');
                 $('#d_cvv_number').focus();
@@ -771,7 +773,8 @@ function check_order_pay() {
                 $('#d_year').focus();
 
             } else {
-                alert('not empty');
+
+                $('form#form-order').submit();
             }
 
         }
