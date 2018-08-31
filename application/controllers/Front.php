@@ -6,6 +6,7 @@ class Front extends CI_Controller{
 			
 			$this->load->helper('url');
 		    $this->load->model('M_Products','mProduct'); 
+		    $this->load->model('M_category','mCate'); 
 
 		    //Load Library and model.
 			//$this->load->library('cart');
@@ -45,6 +46,7 @@ class Front extends CI_Controller{
 
 		$sql_cat_sub2="SELECT * FROM category_sub2";
 		$data['menu_cat_sub2']=$this->mProduct->get_by_sql($sql_cat_sub2);
+		$data['category']=$this->mCate->get_all_category();
 
 
 		$this->load->view('front/home',$data);
@@ -138,7 +140,7 @@ class Front extends CI_Controller{
                                  foreach ($this->cart->contents() as $items) {           
                                 	$no++;                            
                                 $output.='
-                                <li class="product-info">
+                                <li class="product-info" id="cart-'.$items['rowid'].'">
                                     <h4 class="p-name" style="padding:10px 5px 10px 5px;">'.$items['name'].'</h4>
                                     <div class="p-left">
                                         <!-- <a href="#" class="remove_link"></a> -->
@@ -179,7 +181,15 @@ class Front extends CI_Controller{
     	 // echo $this->load_cart_count();
     	
     }
+ public function show_total_price_cart()
+    {
+    	echo number_format($this->cart->total(),2) .'$' ;
+   }
 
+  public function show_count_cart()
+    {
+    	echo  count($this->cart->contents());
+   }
 
 
 

@@ -175,7 +175,7 @@
             </div>
             <!-- CART ICON ON MMENU -->
             <div id="shopping-cart-box-ontop">
-                <i class="fa fa-shopping-cart"> <span style="color: white; background-color: #e50f28; padding:5px 15px 5px 15px; border-radius: 10px; "><?php echo count($this->cart->contents()); ?></span></i>
+                <i class="fa fa-shopping-cart"> <span id="top_cart_count"  style="color: white; background-color: #e50f28; padding:5px 15px 5px 15px; border-radius: 10px; "><?php echo count($this->cart->contents()); ?></span></i>
                 <div class="shopping-cart-box-ontop-content"></div>
             </div>
         </div>

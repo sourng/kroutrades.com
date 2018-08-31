@@ -6,7 +6,7 @@ class Detail extends CI_Controller{
 			
 			$this->load->helper('url');
 		    $this->load->model('M_Products','mProduct'); 
-
+		     $this->load->model('M_category','mCate'); 
 		    //Load Library and model.
 			//$this->load->library('cart');
 			//$this->load->model('billing_model');
@@ -46,7 +46,7 @@ class Detail extends CI_Controller{
 	    $data['Info']="Information on Home Page";
 	    $data['hotcategory']='hot_category';
 	    $data['brandShowCase']='brand_show_case';
-
+	    $data['category']=$this->mCate->get_all_category();
     $this->load->view('front/detail',$data);
   }
 
