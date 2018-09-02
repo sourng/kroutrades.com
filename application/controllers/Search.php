@@ -14,6 +14,7 @@ class Search extends CI_Controller{
             $this->load->library('session');
             // Load database
             $this->load->model('login_database');
+            $this->path_image = base_url()."uploads";
 
 		}
 
@@ -37,7 +38,7 @@ class Search extends CI_Controller{
 		     		 	
 							                  <div class="media block-update-card">
 							                    <a class="pull-left" href="'.site_url().'detail/'.$row['pro_id'].'">
-							                      <img width="40px" height="40px" class="" src="uploads/product_features/'.$row['pro_feature'].'" alt="...">
+							                      <img width="40px" height="40px" class="" src="'.$this->path_image.'/product_features/'.$row['pro_feature'].'" alt="'.$row['pro_name'].'">
 							                    </a>
 							                   
 							                    <div class="media-body update-card-body">  
@@ -75,7 +76,7 @@ class Search extends CI_Controller{
 		     		 	
 							                  <div class="media block-update-card">
 							                    <a class="pull-left" href="'.site_url().'detail/'.$row['pro_id'].'">
-							                      <img width="40px" height="40px" class="" src="uploads/product_features/'.$row['pro_feature'].'" alt="...">
+							                      <img width="40px" height="40px" class="" src="'.$this->path_image.'/product_features/'.$row['pro_feature'].'" alt="'.$row['pro_name'].'">
 							                    </a>
 							                   
 							                    <div class="media-body update-card-body">  

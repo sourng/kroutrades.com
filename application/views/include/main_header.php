@@ -1,11 +1,11 @@
 <style type="text/css">
     .srbox {
       width: 560px;
-        margin: 0px 0px 10px 0px;
+        margin: 10px 0px 10px 0px;
      
      
   }
-    .sr-bg{
+    .sr-bg{         
       position: absolute;
       background-color: #f7f7f7;
        overflow-y: scroll;
@@ -13,10 +13,19 @@
       display: none;
           border-radius: 0px 0px 10px 10px;
     }
+    .mg-top{
+      margin-top: 41px;
+    }
 
     .pro:hover{
       background: #fff;
       cursor: pointer;
+    }
+
+   @media only screen and (max-width: 600px) {
+      .srbox{
+         width: 370px;
+      }
     }
 </style>
 <div class="container main-header">
@@ -41,7 +50,9 @@
                 </form>
                <div class="sr-bg">
                     <div class="srbox">
-                         <div class="hidden-xs" id="livesearch"></div>     
+                         <div id="livesearch">
+                          
+                         </div>     
                     </div>
                </div>
             </div>

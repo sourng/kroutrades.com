@@ -304,8 +304,10 @@
      --------------------------------------------- */
     $(window).scroll(function(){
         /* Show hide scrolltop button */
+
         if( $(window).scrollTop() == 0 ) {
             $('.scroll_top').stop(false,true).fadeOut(600);
+
         }else{
             $('.scroll_top').stop(false,true).fadeIn(600);
         }
@@ -324,6 +326,9 @@
                 $('#shopping-cart-box-ontop').fadeIn();
                 $('#user-info-top').appendTo('#user-info-opntop');
                 $('#header .header-search-box form').appendTo('#form-search-opntop');
+          
+
+
             }else{
                 $('#nav-top-menu').removeClass('nav-ontop');
                 if($('body').hasClass('home')){
@@ -334,12 +339,14 @@
                         $('#nav-top-menu').find('.vertical-menu-content').hide();
                     }
                      $('#nav-top-menu').find('.vertical-menu-content').removeAttr('style');
+                     $('.sr-bg').addClass('mg-top');
                 }
                 ///
                 $('#shopping-cart-box-ontop .cart-block').appendTo('#cart-block');
                 $('#shopping-cart-box-ontop').fadeOut();
                 $('#user-info-opntop #user-info-top').appendTo('.top-header .container');
                 $('#form-search-opntop form').appendTo('#header .header-search-box');
+
             }
         }
     });
@@ -354,6 +361,7 @@
         $('.vertical-menu-content').find('.vertical-dropdown-menu').each(function(){
             $(this).width((full_width - menu_width)-2);
         });
+
     }
     /**==============================
     ***  Remove menu on top
@@ -375,6 +383,7 @@
             $('#user-info-opntop #user-info-top').appendTo('.top-header .container');
             $('#form-search-opntop form').appendTo('#header .header-search-box');
         }
+
     }
     /* Top menu*/
     function scrollCompensate(){
@@ -397,6 +406,7 @@
         if (w1 == w2) w2 = outer.clientWidth;
         document.body.removeChild(outer);
         return (w1 - w2);
+
     }
 
     function resizeTopmenu(){
@@ -417,12 +427,17 @@
                     }
                 }
             });
+
         }
 
         if($(window).width()+scrollCompensate() < 1025){
             $("#main-menu li.dropdown:not(.active) >a").attr('data-toggle','dropdown');
+
         }else{
             $("#main-menu li.dropdown >a").removeAttr('data-toggle');
         }
+
+        
+
     }
 })(jQuery); // End of use strict

@@ -9,7 +9,7 @@
     
     <title><?php echo $pro_detail[0]['pro_name']; ?></title>
 </head>
-<body class="product-page right-sidebar">
+<body class="product-page right-sidebar home">
 
 <div id="header" class="header">
 <div class="top-header">
@@ -202,6 +202,7 @@ function live_serach(str) {
 function link(link=''){
    location.assign("<?php echo site_url() ?>detail/" + link);
 }
+
 </script>
 
 </body>
