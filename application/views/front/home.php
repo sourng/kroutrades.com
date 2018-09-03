@@ -9,7 +9,7 @@
    ?> 
     <title>Kute shop - themelock.com</title>
 </head>
-<body class="home">
+<body class="home search">
 <!-- TOP BANNER -->
 <!--<div id="top-banner" class="top-banner">
     <div class="bg-overlay"></div>

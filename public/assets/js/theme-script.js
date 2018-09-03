@@ -339,8 +339,11 @@
                         $('#nav-top-menu').find('.vertical-menu-content').hide();
                     }
                      $('#nav-top-menu').find('.vertical-menu-content').removeAttr('style');
-                     $('.sr-bg').addClass('mg-top');
+                    
                 }
+                 if($('body').hasClass('search')){
+                     $('.sr-bg').addClass('mg-top');
+                 }
                 ///
                 $('#shopping-cart-box-ontop .cart-block').appendTo('#cart-block');
                 $('#shopping-cart-box-ontop').fadeOut();

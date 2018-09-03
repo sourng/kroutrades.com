@@ -9,7 +9,7 @@
     
     <title><?php echo $pro_detail[0]['pro_name']; ?></title>
 </head>
-<body class="product-page right-sidebar home">
+<body class="product-page right-sidebar search">
 
 <div id="header" class="header">
 <div class="top-header">
