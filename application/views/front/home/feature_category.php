@@ -1,3 +1,5 @@
+
+
  <!-- featured category fashion -->
  <div class="category-featured">
             <nav class="navbar nav-menu nav-menu-red show-brand">
@@ -34,7 +36,17 @@
                 <div class="banner-featured">
                     <div class="featured-text"><span>featured</span></div>
                     <div class="banner-img">
-                        <a href="#"><img alt="Featurered 1" src="<?php echo base_url(); ?>uploads/products/f1.jpg" /></a>
+
+                    	<?php 
+                    	$pro_feature = $this->image->get_image_feature_random();
+
+                    	if ($pro_feature != false) { ?>
+                    		  <a href="<?php echo site_url('detail/'.$pro_feature[0]['pro_id']) ?>">
+	                        	<img alt="Featurered 1" src="<?php echo $this->image->get_image('uploads/product_features/', $pro_feature[0]['pro_feature'] , '500' , '800'); ?>" />
+	                        </a>
+                   	 <?php } ?>
+                      
+
                     </div>
                 </div>
                 <div class="product-featured-content">
@@ -54,7 +66,7 @@
 										<li>
 											<div class="left-block">
 												<a href="<?php echo site_url();?>detail/<?php echo $rows['pro_id']; ?>">
-												<img class="img-responsive" alt="<?php echo $rows['pro_feature']; ?>" src="<?php echo base_url(); ?>uploads/product_features/<?php echo $rows['pro_feature']; ?>" /></a>
+												<img class="img-responsive" alt="<?php echo $rows['pro_feature']; ?>" src="<?php echo $this->image->get_image('uploads/product_features/', $rows['pro_feature'] , '500' , '500'); ?>" /></a>
 												<div class="quick-view">
 														<a title="Add to my wishlist" class="heart" href="#"></a>
 														<a title="Add to compare" class="compare" href="#"></a>

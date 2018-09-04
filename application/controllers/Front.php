@@ -6,7 +6,8 @@ class Front extends CI_Controller{
 			
 			$this->load->helper('url');
 		    $this->load->model('M_Products','mProduct'); 
-		    $this->load->model('M_category','mCate'); 
+            $this->load->model('M_category','mCate'); 
+		    $this->load->model('M_image','image'); 
 
 		    //Load Library and model.
 			//$this->load->library('cart');
@@ -19,6 +20,8 @@ class Front extends CI_Controller{
             $this->load->library('session');
             // Load database
             $this->load->model('login_database');
+
+            $this->path_image = base_url(). "timthumb.php?src=".base_url()."uploads";
 
 		}
 
@@ -84,7 +87,7 @@ class Front extends CI_Controller{
 		
 
 
-
+        $data['category']=$this->mCate->get_all_category();
 		$this->load->view('front/category/category',$data);
 	}
 

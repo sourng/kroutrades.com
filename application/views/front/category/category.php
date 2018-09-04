@@ -16,7 +16,7 @@
     
     <title>Category Stype2 - Kute shop - themelock.com</title>
 </head>
-<body class="category-page right-sidebar">
+<body class="category-page right-sidebar search">
 <!-- HEADER -->
 <div id="header" class="header">
   
@@ -234,7 +234,7 @@
                             <div class="product-container">
                                 <div class="left-block">
                                     <a href="<?php echo site_url();?>detail/<?php echo $rows['pro_id']; ?>">
-                                        <img class="img-responsive" alt="product" src="<?php echo base_url();?>uploads/products/<?php echo $rows['pro_feature']; ?>" />
+                                        <img class="img-responsive" alt="product" src="<?php echo $this->image->get_image('uploads/product_features/', $rows['pro_feature'] , '500' , '500'); ?>" />
                                     </a>
                                     <div class="quick-view">
                                         <a title="Add to my wishlist" class="heart" href="#"></a>
@@ -397,6 +397,75 @@
             });
         });
     });
+
+
+
+$(document).click(function() {
+    lightbg_clr();
+
+})
+function lightbg_clr() {
+  
+    $('#livesearch').css({"display":"none"});   
+    //$("#search").focus();
+    $(".sr-bg").css({"display":"none"}); 
+    //$('#search-form')[0].reset();   
+    /*$("#search").val('');*/
+ };
+function live_serach(str) {
+
+   var cat = $('#Categories').val();
+    var link =  "<?php echo site_url() ?>search/product/"+ str ;
+
+    if (cat != 0) {
+        link =  "<?php echo site_url() ?>search/category/"+cat +'/' + str ;
+    }
+
+    if (str.length == 0) {
+
+        $("#livesearch").html("");
+        $("#livesearch").css('border', '0px');
+        $("#search-layer").css("width", "auto");
+        $("#sr-bg").css("height", "0px");
+        $("#livesearch").css("display", "block");
+        return;
+    } else {
+
+        $("#search-layer").css("width", "100%");
+        $("#search-layer").css("height", "100%");
+        $("#livesearch").css("display", "block");
+        $(".sr-bg").css({"display":"block"}); 
+        $(".sr-bg").css("height", "200px");
+
+
+        $.ajax({
+            url: link,
+            method: "GET",
+            success: function(data) {
+                $('#livesearch').html(data);
+            }
+        });
+
+    }
+
+}
+
+function link(link=''){
+   location.assign("<?php echo site_url() ?>detail/" + link);
+}
+
+function category(cat_id,subcat2_id) {
+    alert(cat_id+','+subcat2_id);
+}
+   function Cat() {
+    
+    var subcat2_id = $('#Categories').val();
+    var cat_id =$('#category-'+subcat2_id).data('cat-id');
+    var str = $('input#search').val();
+
+     $('form#search-form').attr('action', "<?php echo site_url() ?>front/category/"+cat_id+'/'+subcat2_id +'/'+ str);
+
+};
 </script>
 </body>
 </html>

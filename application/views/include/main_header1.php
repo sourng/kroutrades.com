@@ -33,7 +33,6 @@
       }
     }
 </style>
-
 <div class="container main-header">
         <div class="row">
             <div class="col-xs-12 col-sm-3 logo">
@@ -42,22 +41,16 @@
             <div class="col-xs-7 col-sm-7 header-search-box">
                 <form  id="search-form" class="form-inline" method="POST">
                       <div class="form-group form-category">
-                        <select class="select-category" id="Categories" onchange="Cat();">
-                            <option  value="0" >All Categories</option>
-                        
+                        <select class="select-category" id="cate">
+                            <option  value="0">All Categories</option>
                              <?php foreach ($category as $row) :?>
-                                  <option id="category-<?php echo $row['subcat2_id'] ?>" data-cat-id="<?php echo $row['cat_id'] ?>" value="<?php echo $row['subcat2_id'] ?>" 
-                                  	<?php if($row['subcat2_id'] == $this->uri->segment(4)){
-	                                  	 echo ' selected';
-	                                  	} ?>>
-                                  	<?php echo $row["subcat_name"] ?></option>
+                                  <option id="category-<?php echo $row['subcat2_id'] ?>" data-cat-id="<?php echo $row['cat_id'] ?>" value="<?php echo $row['subcat2_id'] ?>"><?php echo $row["subcat_name"] ?></option>
                              <?php endforeach; ?>
                         </select>
                       </div>
 
-
                       <div class="form-group input-serach">
-                        <input type="text" onKeyUp="live_serach(this.value);Cat();" autocomplete="off" id="search" class="textbox" placeholder="search ..." tabindex="1">
+                        <input type="text" onKeyUp="live_serach(this.value);" autocomplete="off" id="search" class="textbox" placeholder="search ..." tabindex="1">
                       </div>
                       <button type="submit" class="pull-right btn-search"></button>
                 </form>
@@ -89,6 +82,3 @@
         </div>
         
     </div>
-    <script type="text/javascript">
-
-    </script>

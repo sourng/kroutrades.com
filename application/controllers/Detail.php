@@ -7,6 +7,7 @@ class Detail extends CI_Controller{
 			$this->load->helper('url');
 		    $this->load->model('M_Products','mProduct'); 
 		     $this->load->model('M_category','mCate'); 
+		     $this->load->model('M_image','image'); 
 		    //Load Library and model.
 			//$this->load->library('cart');
 			//$this->load->model('billing_model');

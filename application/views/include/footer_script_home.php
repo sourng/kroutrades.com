@@ -76,7 +76,7 @@ function lightbg_clr() {
     //$("#search").focus();
     $(".sr-bg").css({"display":"none"}); 
     //$('#search-form')[0].reset();   
-    $("#search").val('');
+   /* $("#search").val('');*/
  };
 function live_serach(str) {
 
@@ -119,5 +119,22 @@ function live_serach(str) {
 function link(link=''){
    location.assign("<?php echo site_url() ?>detail/" + link);
 }
+
+function category(cat_id,subcat2_id) {
+    alert(cat_id+','+subcat2_id);
+}
+
+   function Cat() {
+    
+    var subcat2_id = $('#Categories').val();
+    var cat_id =$('#category-'+subcat2_id).data('cat-id');
+    var str = $('input#search').val();
+
+     $('form#search-form').attr('action', "<?php echo site_url() ?>front/category/"+cat_id+'/'+subcat2_id +'/'+ str);
+
+};
+
+
+
 
 </script>
