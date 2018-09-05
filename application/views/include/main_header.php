@@ -40,10 +40,10 @@
                 <a href="<?php echo site_url(); ?>"><img alt="Kute shop - themelock.com" src="<?php echo base_url(); ?>public/assets/images/logo.png" /></a>
             </div>
             <div class="col-xs-7 col-sm-7 header-search-box">
-                <form  id="search-form" class="form-inline" method="POST">
+                <form  id="search-form" class="form-inline" method="POST" onsubmit="Cat();">
                       <div class="form-group form-category">
                         <select class="select-category" id="Categories" onchange="Cat();">
-                            <option  value="0" >All Categories</option>
+                            <option  id="category-0" data-cat-id="0" value="0" >All Categories</option>
                         
                              <?php foreach ($category as $row) :?>
                                   <option id="category-<?php echo $row['subcat2_id'] ?>" data-cat-id="<?php echo $row['cat_id'] ?>" value="<?php echo $row['subcat2_id'] ?>" 

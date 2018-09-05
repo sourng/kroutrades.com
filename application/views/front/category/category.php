@@ -233,13 +233,25 @@
                 <!-- view-product-list-->
                 <div id="view-product-list" class="view-product-list">
                     <h2 class="page-heading">
-                        <span class="page-heading-title"><?php 
+                        <span class="page-heading-title">
+                     <!--        <?php 
                         $subcat2_id=$param1?$param1:1; 
                         $sqlGetSubCat2="SELECT subcat_name FROM category_sub2 WHERE subcat2_id=".$subcat2_id;
                         $subCat2=$this->mProduct->get_by_sql($sqlGetSubCat2);
                         echo $subCat2[0]['subcat_name'];                        
 
-                        ?></span>
+                        ?> -->
+                         <?php
+                          $cate = 'All Categories';
+                          foreach ($category as $row) {
+                                if ($param2 == $row['subcat2_id']) {
+                                    $cate = $row['subcat_name'];
+                                }
+                            } 
+                            echo $cate;
+                         ?> 
+
+                        </span>
                     </h2>
                     <ul class="display-product-option">
                         <li class="view-as-grid selected">
@@ -431,9 +443,7 @@ function link(link=''){
    location.assign("<?php echo site_url() ?>detail/" + link);
 }
 
-function category(cat_id,subcat2_id) {
-    alert(cat_id+','+subcat2_id);
-}
+
    function Cat() {
     
     var subcat2_id = $('#Categories').val();

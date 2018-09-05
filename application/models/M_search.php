@@ -33,7 +33,14 @@ class M_search extends CI_Model{
 
     function get_product_load_more($start ='',$limit = '' ,$subcat2='')
      {  
-        $sql="SELECT * FROM products as p WHERE p.subcat2_id=". $subcat2 ." limit " .$start .",".$limit;
+       
+
+        if ($subcat2 == '' || $subcat2 == 0) {
+
+            $sql="SELECT * FROM products as p  limit " .$start .",".$limit;
+        }else{
+             $sql="SELECT * FROM products as p WHERE p.subcat2_id=". $subcat2 ." limit " .$start .",".$limit;
+        }
             $query=$this->db->query($sql);
             if ($query->num_rows()>0) {
                 foreach ($query->result_array() as $row) {
