@@ -68,6 +68,15 @@
 										</a>
 										
 									</li>
+
+									
+									<li class="<?php if ($page == 'order') echo 'nav-expanded nav-active';  ?> ">
+										<a href="<?php echo site_url() ?>company/order/list">										
+											<i class="fa fa-list-alt" aria-hidden="true"></i>
+											<span>Order</span>
+										</a>
+										
+									</li>
 								
 								</ul>
 							</nav>

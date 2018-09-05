@@ -227,7 +227,7 @@
 
                     </div>
                     <div class="col-md-4"  >
-                        <img  id="img-feature" src="<?php echo base_url() ?>public/images/product_features/products.png" alt="feature" height="300" width="100%" />
+                        <img  id="img-feature" src="../uploads/product_features/products.png" alt="feature" height="300" width="100%" />
                     </div>
 
 

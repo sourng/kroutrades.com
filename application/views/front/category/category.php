@@ -13,12 +13,39 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/assets/css/style.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/assets/css/responsive.css" />
+
+
     
     <title>Category Stype2 - Kute shop - themelock.com</title>
+
+    <style>
+        .loading {
+            margin-left: 50px;
+          border: 16px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 16px solid #ff3366;
+          width: 120px;
+          height: 120px;
+          -webkit-animation: spin 2s linear infinite; /* Safari */
+          animation: spin 2s linear infinite;
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+</style>
 </head>
 <body class="category-page right-sidebar search">
 <!-- HEADER -->
 <div id="header" class="header">
+
   
      <?php $this->load->view('include/top_header'); ?>
     <!--/.top-header -->
@@ -218,66 +245,16 @@
                         <li class="view-as-grid selected">
                             <span>grid</span>
                         </li>
-                        <li class="view-as-list">
+                        <li class="view-as-list " >
                             <span>list</span>
                         </li>
                     </ul>
                     <!-- PRODUCT LIST -->
+                     
                     <ul class="row product-list style2 grid">
 
-                        <?php
-                            if($ProCatList !=false):
-                            //  for($i=1;$i<10;$i++){
-								foreach($ProCatList as $rows){
-                        ?>
-                        <li class="col-sx-12 col-sm-4">
-                            <div class="product-container">
-                                <div class="left-block">
-                                    <a href="<?php echo site_url();?>detail/<?php echo $rows['pro_id']; ?>">
-                                        <img class="img-responsive" alt="product" src="<?php echo $this->image->get_image('uploads/product_features/', $rows['pro_feature'] , '500' , '500'); ?>" />
-                                    </a>
-                                    <div class="quick-view">
-                                        <a title="Add to my wishlist" class="heart" href="#"></a>
-                                        <a title="Add to compare" class="compare" href="#"></a>
-                                        <a title="Quick view" class="search" href="#"></a>
-                                    </div>
-                                </div>
-                                <div class="right-block">
-                                    <h5 class="product-name"><a href="<?php echo site_url();?>detail/<?php echo $rows['pro_id']; ?>"><?php echo $rows['pro_name']; ?></a></h5>
-                                    <div class="product-star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                    <div class="content_price">
-									<?php
-                                 $sellPrice=$rows['pro_price']-($rows['pro_price']*$rows['pro_discount'])/100;
-                                $price=round($sellPrice,2);
-                                 ?>
-
-                                        <span class="price product-price">$<?php echo $price; ?></span>
-                                        <span class="price old-price">$<?php echo $rows['pro_price']; ?></span>
-                                    </div>
-                                    <div class="info-orther">
-                                        <p>Item Code: #<?php echo $rows['sku']; ?></p>
-                                        <p class="availability">Availability: <span>In stock</span></p>
-                                        <div class="product-desc">
-										<?php echo $rows['pro_description']; ?>
-                                        </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <a title="Add to Cart" href="#add"><span></span>Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <?php 
-                            }
-                        endif
-                        ?>
-
+                       <div id="ajax_load"></div>
+                       <div id="ajax_load_more"></div>
 
                         
                         
@@ -285,7 +262,7 @@
                     <!-- ./PRODUCT LIST -->
                 </div>
                 <!-- ./view-product-list-->
-                <div class="sortPagiBar">
+               <!--  <div class="sortPagiBar">
                     <div class="bottom-pagination">
                         <nav>
                           <ul class="pagination">
@@ -319,7 +296,7 @@
                             <i class="fa fa-sort-alpha-asc"></i>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- ./ Center colunm -->
         </div>
@@ -466,6 +443,69 @@ function category(cat_id,subcat2_id) {
      $('form#search-form').attr('action', "<?php echo site_url() ?>front/category/"+cat_id+'/'+subcat2_id +'/'+ str);
 
 };
+
+
+
+
+
+$(document).ready(function(){
+ var subcat2_id = $('#Categories').val();
+ var limit = 1;
+ var start = 0;
+ var action = 'inactive';
+ function load_data(limit, start)
+ {
+  $.ajax({
+   url:"<?php echo site_url() ?>ajax_load_more/product",
+   method:"POST",
+   data:{limit:limit, start:start, subcat2:subcat2_id},
+   cache:false,
+    beforeSend: function() {
+       $('#ajax_load_more').html(" <li class='col-sx-12 col-sm-4' id='loading'><div class='product-container'><div class='left-block'><div class='loading'></div></div></div></li>");
+    },
+   success:function(data)
+   {
+    $('#ajax_load').append(data);
+    if(data == '')
+    {
+     $('#ajax_load_more').html(" <li class='col-sx-12 col-sm-4'><div class='product-container'><div class='left-block'><button type='button' class='btn btn-info'>No Data Found</button></div></div></li>");
+     action = 'active';
+    }
+    else
+    {
+       
+
+          setTimeout(function(){
+            $('#loading').remove();
+           }, 1000);
+    
+     action = "inactive";
+    }
+   }
+  });
+ }
+
+ if(action == 'inactive')
+ {
+  action = 'active';
+  load_data(limit, start);
+ }
+ $(window).scroll(function(){
+  if($(window).scrollTop() + $(window).height() > $(".product-list").height() && action == 'inactive')
+  {
+   action = 'active';
+   start = start + limit;
+   setTimeout(function(){
+    load_data(limit, start);
+   }, 1000);
+  }
+ });
+ 
+});
+
+
+
+
 </script>
 </body>
 </html>

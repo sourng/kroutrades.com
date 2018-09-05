@@ -23,7 +23,7 @@
 											<td class="center hidden-phone"> <?php echo $row['pro_size'] ?> </td>
 											<td class="center hidden-phone"> <?php echo $row['pro_price'] ?> </td>
 											<td class="center hidden-phone"> <?php echo $row['pro_discount'] ?> </td>
-											<td class="center hidden-phone"> <img width="100px" src="<?php echo base_url().'public/images/product_features/'. $row['pro_feature'] ?>">  </td>
+											<td class="center hidden-phone"> <img width="100px" src="<?php echo base_url().'../uploads/product_features/'. $row['pro_feature'] ?>">  </td>
 											<td class="center hidden-phone">
 
 												<a href="<?php echo site_url() ?>company/product/edit/<?php echo $row['pro_id']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a> 

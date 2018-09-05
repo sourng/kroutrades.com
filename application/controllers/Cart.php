@@ -9,6 +9,8 @@ class Cart extends CI_Controller {
 		$this->load->helper('url');
 	    $this->load->model('M_Products','mProduct'); 
 		$this->load->model('Cart_model');
+		 $this->load->model('M_category','mCate'); 
+		     $this->load->model('M_image','image');
 		
 		if($this->session->userdata['logged_in']==false){
 			redirect('front/login');
@@ -47,7 +49,7 @@ class Cart extends CI_Controller {
 		$data['menu_cat_sub2']=$this->mProduct->get_by_sql($sql_cat_sub2);
 		// End Menu
 
-
+		$data['category']=$this->mCate->get_all_category();
 		// $this->load->view('cart', $this->data);
 		// $this->load->view('front/checkout',$this->data);
 		$this->load->view('front/checkout/order',$data);

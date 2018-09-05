@@ -11,6 +11,8 @@ class Company extends CI_Controller {
         $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
         $this->output->set_header('Pragma: no-cache');
       	$this->load->model('m_product', '', true);
+      	$this->load->model('m_order', '', true);
+      	$this->upload_path = '../uploads';
 
       	$this->load->helper('url');
     }
@@ -93,7 +95,7 @@ class Company extends CI_Controller {
 				$this->db->insert('products',$data);
 
 				$pro_id = $this->db->insert_id();				
-				move_uploaded_file($_FILES['feature']['tmp_name'],'./public/images/product_features/' . $pro_image_name);
+				move_uploaded_file($_FILES['feature']['tmp_name'],$this->upload_path.'/product_features/' . $pro_image_name);
 
 				$images = $_FILES['images']['tmp_name'];
 				//$data['pro_image']= '';
@@ -105,7 +107,7 @@ class Company extends CI_Controller {
 
 						if($value <> ''){
 						$this->db->insert('products_images',$data2);
-						move_uploaded_file($images[$image],'./public/images/product_images/' . $pro_image_name);				
+						move_uploaded_file($images[$image],$this->upload_path.'/product_images/' . $pro_image_name);				
 					}
 				}
 				
@@ -160,7 +162,7 @@ class Company extends CI_Controller {
                if($feature!=''){
 					$pro_image_name = uniqid(time(), true).'.jpg';
 					$data['pro_feature'] = $pro_image_name;         
-                    move_uploaded_file($_FILES['feature']['tmp_name'],'./public/images/product_features/' . $pro_image_name);
+                    move_uploaded_file($_FILES['feature']['tmp_name'],$this->upload_path.'/product_features/' . $pro_image_name);
                }else{                       
                         $data['pro_feature'] = $feature2; 
                } 
@@ -188,7 +190,7 @@ class Company extends CI_Controller {
 					if ($value <> '') {
 					$data2['pro_image'] = $pro_image_name;	
 					
-					move_uploaded_file($images[$image],'./public/images/product_images/' . $pro_image_name);	
+					move_uploaded_file($images[$image],$this->upload_path.'/product_images/' . $pro_image_name);	
 							
 					}else{
 
@@ -232,5 +234,33 @@ class Company extends CI_Controller {
 		$this->load->view('index',$page_data);
 
 	}
+
+
+	public function order($param1 = '', $param2 = '', $param3 = '' ,$param4 = '')
+	{
+		 
+		 if ($this->session->userdata('log_company') != 1)
+            redirect(base_url(), 'index.php?login', 'refresh');
+
+        $session_company_id = $this->session->userdata('id');
+       
+		$page_data['folder'] = 'company';
+		$page_data['action'] = 'order_action';
+		$page_data['page'] = 'order';
+		$page_data['page_sub'] = '';
+
+		if ($param1 == 'list'){
+			
+			$page_data['page_name'] = 'order';
+			$page_data['page_head'] = 'product_head';
+			$page_data['page_footer'] = 'product_footer';			
+			
+			$page_data['order'] = $this->m_order->get_order($session_company_id);			
+			$page_data['form_name']='form_order_list';
+
+
+		}
+        $this->load->view('index',$page_data);
+    }
 
 }

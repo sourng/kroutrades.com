@@ -3,7 +3,7 @@
 						<h2><?php echo ucfirst($page); ?></h2>
 
 						
-						<?php $this->load->view('admin/'.$action); ?> 
+					<?php $this->load->view('company/'.$action); ?>
 
 						<div class="right-wrapper pull-right">
 							<ol class="breadcrumbs">

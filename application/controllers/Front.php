@@ -82,7 +82,7 @@ class Front extends CI_Controller{
 		$data['menu_cat_sub2']=$this->mProduct->get_by_sql($sql_cat_sub2);
 
 
-		$sqlProCatList="SELECT * FROM products as p WHERE p.subcat2_id=". $param2;
+		$sqlProCatList="SELECT * FROM products as p WHERE p.subcat2_id=". $param2 .' limit 0,6';
 		$data['ProCatList']=$this->mProduct->get_by_sql($sqlProCatList);
 		
 

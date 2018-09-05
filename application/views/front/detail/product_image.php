@@ -6,7 +6,7 @@
                                  <!-- product-imge-->
                                 <div class="product-image">
                                     <div class="product-full">
-                                        <img id="product-zoom" src='<?php echo base_url(); ?>uploads/product_features/<?php echo $pro_detail[0]['pro_feature']; ?>' data-zoom-image="<?php echo base_url(); ?>uploads/product_features/<?php echo $pro_detail[0]['pro_feature']; ?>"/>
+                                        <img id="product-zoom" src="<?php echo $this->image->get_image('uploads/product_features/', $pro_detail[0]['pro_feature'] , '500' , '350'); ?>" data-zoom-image="<?php echo $this->image->get_image('uploads/product_features/', $pro_detail[0]['pro_feature'] , 'auto' , '800'); ?>"/>
                                     </div>
                                     <div class="product-img-thumb" id="gallery_01">
                                         <ul class="owl-carousel" data-items="3" data-nav="true" data-dots="false" data-margin="20" data-loop="true">
@@ -18,8 +18,8 @@
 
 												?>
 												<li>
-                                                <a href="#" data-image="<?php echo base_url(); ?>uploads/product_images/<?php echo $pdg['pro_image']; ?>" data-zoom-image="<?php echo base_url(); ?>uploads/product_images/<?php echo $pdg['pro_image']; ?>">
-                                                    <img id="product-zoom"  src="<?php echo base_url(); ?>uploads/product_images/<?php echo $pdg['pro_image']; ?>" /> 
+                                                <a href="#" data-image="<?php echo $this->image->get_image('uploads/product_images/', $pdg['pro_image'] , '500' , '350'); ?>" data-zoom-image="<?php echo $this->image->get_image('uploads/product_images/', $pdg['pro_image'] , 'auto' , '800'); ?>">
+                                                    <img id="product-zoom"  src="<?php echo $this->image->get_image('uploads/product_images/', $pdg['pro_image'] , '300' , '300'); ?>" /> 
                                                 </a>
 											</li>
 											<?php

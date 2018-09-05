@@ -87,7 +87,7 @@
 											</div>
 											<div class="right-block">
 												<h5 class="product-name">
-													<a href="<?php echo site_url();?>detail"><?php echo $rows['pro_name'];  ?>
+													<a href="<?php echo site_url();?>detail/<?php echo $rows['pro_id'];  ?>"><?php echo $rows['pro_name'];  ?>
 													</a></h5>
 													
 

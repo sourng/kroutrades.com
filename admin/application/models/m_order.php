@@ -8,8 +8,13 @@ class M_order extends CI_Model {
     }
 
 
-   function get_order() 
+   function get_order($company_id='') 
     {  
+
+        $where = '';
+        if ($company_id <> '') {
+            $where = " where com.company_id = ".$company_id;
+        }
         $sql="SELECT ords.*,ords_item.*,pro.*,cus.*,com.* from
                 orders as ords join
                 orders_item as ords_item join
@@ -21,7 +26,7 @@ class M_order extends CI_Model {
                 ords.pro_id and ords_item.pro_id = pro.pro_id and
                 pro.company_id = com.company_id
             ";
-            $query=$this->db->query($sql);
+            $query=$this->db->query($sql.$where);
             if ($query->num_rows()>0) {
                 foreach ($query->result_array() as $row) {
                     $data[]=$row;

@@ -699,7 +699,7 @@ class Admin extends CI_Controller {
 
        
 		$page_data['folder'] = 'admin';
-		$page_data['action'] = 'company_action';
+		$page_data['action'] = 'order_action';
 		$page_data['page'] = 'order';
 		$page_data['page_sub'] = '';
 

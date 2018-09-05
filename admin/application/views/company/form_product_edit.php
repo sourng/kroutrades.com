@@ -254,7 +254,7 @@
                                                
                                             </div>
                                                <div style="padding-bottom: 4px "></div>
-                                                <img class="img" id="img-image-<?php echo $i ?>" src="<?php echo base_url() ?>public/images/product_images/<?php if($image['pro_image'] <> '' ){ echo $image['pro_image']; }else{ echo 'image.png'; } ?>"   />
+                                                <img class="img" id="img-image-<?php echo $i ?>" src="<?php echo base_url() ?>../uploads/product_images/<?php if($image['pro_image'] <> '' ){ echo $image['pro_image']; }else{ echo 'image.png'; } ?>"   />
                                                  <!-- <span class="remove_img_preview" id="remove-image" data-id="<?php echo $i ?>"></span> -->
                                                  <div style="padding-bottom: 4px "></div>
 
@@ -309,7 +309,7 @@
 
                     </div>
                     <div class="col-md-4"  >
-                        <img  id="img-feature" src="<?php echo base_url() ?>public/images/product_features/<?php echo $product_edit[0]['pro_feature'] ?>" alt="feature" height="300" width="100%" />
+                        <img  id="img-feature" src="<?php echo base_url() ?>../uploads/product_features/<?php echo $product_edit[0]['pro_feature'] ?>" alt="feature" height="300" width="100%" />
                     </div>
 
 
