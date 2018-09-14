@@ -96,6 +96,55 @@
 
 
 
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+
+
+	$("input#price").change(function (e) {
+	 	if($(this).val() < 1){
+	 		$(this).val(0);
+	 	};
+	})
+
+$("input#price").keypress(number);
+  function number(event) {
+      var key = window.event ? event.keyCode : event.which;
+      if (event.keyCode === 8 || event.keyCode === 46) {
+          return true;
+      } else if (key < 48 || key > 57) {
+          return false;
+      } else {
+          return true;
+      }
+  };
+
+  	$('#condition').val([]);
+    $('#btn_submit').click(function(e) {
+        var isValid = true;
+        $('input.required,textarea.required,select.required').each(function() {
+            if ($.trim($(this).val()) == '') {
+                isValid = false;
+                $(this).css({
+                    "border": "1px solid red",
+                    "background": "#FFCECE"
+                });
+            }
+            else {
+                $(this).css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+        });
+        if (isValid == false) 
+            e.preventDefault();
+        else 
+           $('#form').submit();
+    });
+});
+</script>
 	
 
 
