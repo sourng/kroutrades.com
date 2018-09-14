@@ -38,6 +38,7 @@
         $('#detail_cart').load("<?php echo site_url('front/load_cart');?>");
         
         $('#count_cart').load("<?php echo site_url('front/load_cart_count');?>");
+        $('span#count_cart').load("<?php echo site_url('front/show_count_cart');?>");
 
         
  
@@ -51,14 +52,17 @@
                 success :function(data){
                     $('#detail_cart').html(data);
                     $('#count_cart').load("<?php echo site_url('front/load_cart_count');?>");
-                    $('#cart-'+row_id).remove();
+                    $('li#cart-'+row_id).remove();
+                    $('tr#cart-'+row_id).remove();
 
                     $('.toal-price').load("<?php echo site_url('front/show_total_price_cart');?>");
+                    $('#total-n-tax').load("<?php echo site_url('front/show_total_price_cart');?>");
+                    $('#total-price').load("<?php echo site_url('front/show_total_price_cart');?>");
 
-                    
 
                      $.get("<?php echo site_url('front/show_count_cart');?>", function(count){
                          $('#top_cart_count').html(count);
+                         $('span#count_cart').html(count);
                         $('.cart-title').html(count + ' Items in my cart');
                     });
                 } 

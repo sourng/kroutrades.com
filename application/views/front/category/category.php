@@ -254,16 +254,16 @@
                         </span>
                     </h2>
                     <ul class="display-product-option">
-                        <li class="view-as-grid selected">
+                        <li class="view-as-grid ">
                             <span>grid</span>
                         </li>
-                        <li class="view-as-list " >
+                        <li class="view-as-list selected" >
                             <span>list</span>
                         </li>
                     </ul>
                     <!-- PRODUCT LIST -->
                      
-                    <ul class="row product-list style2 grid">
+                    <ul class="row product-list style2 list">
 
                        <div id="ajax_load"></div>
                        <div id="ajax_load_more"></div>

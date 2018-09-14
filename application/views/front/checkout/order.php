@@ -102,7 +102,7 @@ header("location: login");
             <div> 
                 <div id="step-1" class=""> 
                      <div class="heading-counter warning" style="padding: 15px;">Your shopping cart contains:
-                            <span style="color:white; background-color:#FF4523; padding: 8px;"> 1 </span> Product
+                            <span style="color:white; background-color:#FF4523; padding: 8px;" id="count_cart"> 0 </span> Product
                     </div>
 
             <div class="order-detail-content" style="width: 100%;
@@ -122,37 +122,98 @@ header("location: login");
                     <tbody>
                             <?php foreach ($this->cart->contents() as $items): ?>
 
-                        <tr>
+                        <tr id="cart-<?php echo $items['rowid'] ?>">
                             <td class="cart_product">
                                 <a href="#"><img src="<?php echo base_url() ?>uploads/product_features/<?php echo $items['img']; ?>" alt="Product"></a>
                             </td>
                             <td class="cart_description">
                                 <p class="product-name"><a href="#"><?php echo $items['name']; ?></a></p>
                                 <small class="cart_ref">SKU : #123654999</small><br>
-                                <small><a href="#">Color : Beige</a></small><br>   
-                                <small><a href="#">Size : S</a></small>
+                                <small>
+                                    <a href="#">Color : </a>
+                                    
+                                     <select name="color" onchange="update_cart('<?php echo $items['rowid'] ?>');" id="color-<?php echo $items['rowid'] ?>">   
+
+
+                                          <?php 
+                                             $pro_color = $this->color->get_color($items['id']);
+                                            if ($pro_color != false) {
+                                              
+                                                   $color = explode(",", $pro_color[0]['color']);
+                                                    foreach($color as $val) {
+                                                        $val = trim($val);
+                                                         ?>
+                                                             <option value="<?php echo $val; ?>" 
+                                                                        <?php if ($val == $items['options']['color']) {
+                                                                            echo ' selected';
+                                                                         } ?>
+                                                                 >
+                                                             <?php echo $val; ?>
+                                                                 
+                                                             </option>
+                                                        <?php
+                                                    }
+
+                                            }
+                                                                        
+                                            ?>
+                                        </select>
+                                </small>
+                                <br>   
+                                <small>
+                                    <a href="#">Size : </a> 
+
+
+                                     <select name="size" onchange="update_cart('<?php echo $items['rowid'] ?>');" id="size-<?php echo $items['rowid'] ?>">   
+
+
+                                            <?php 
+                                             $pro_size = $this->size->get_size($items['id']);
+                                            if ($pro_size != false) {
+                                              
+                                                   $size = explode(",", $pro_size[0]['pro_size']);
+                                                    foreach($size as $val) {
+                                                        $val = trim($val);
+                                                         ?>
+                                                             <option value="<?php echo $val; ?>" 
+                                                                        <?php if ($val == $items['options']['size']) {
+                                                                            echo ' selected';
+                                                                         } ?>
+                                                                 >
+                                                             <?php echo $val; ?>
+                                                                 
+                                                             </option>
+                                                        <?php
+                                                    }
+
+                                            }
+                                                                        
+                                            ?>
+                                        </select>
+
+                                </small>
                             </td>
                             <td class="cart_avail"><span class="label label-success">In stock</span></td>
-                            <td class="price"><span><?php echo number_format($items['price'],2); ?> $</span></td>
+                            <td class="price"><span id="old-price-<?php echo $items['rowid'] ?>" data-old-price="<?php echo number_format($items['price'],2); ?>"><?php echo number_format($items['price'],2); ?> $</span></td>
                             <td class="qty">
                                 <!-- <input class="form-control input-sm" type="text" value="1">
                                 <a href="#"><i class="fa fa-caret-up"></i></a>
                                 <a href="#"><i class="fa fa-caret-down"></i></a> -->
                                 
                                 <div class="product-quantity">
-                                    <input type="number" min="1" value="<?php echo $items['qty'] ?>">
+                                    <input type="number" min="1" value="<?php echo $items['qty'] ?>" onchange="update_cart('<?php echo $items['rowid'] ?>');" id="qty-<?php echo $items['rowid'] ?>" >
                                 </div>
                                 <!-- <input  class="quantity qty<?php //echo $items['rowid'] ?> form-control" type="number" min="1" value="<?php echo $items['qty'] ?>">                     -->
 
                             </td>
                             <td class="price">
-                            <div class="product-line-price">45.99</div>
-                                <span><?php echo number_format($items['subtotal'],2); ?> $</span>
+                            <!-- <div class="product-line-price">45.99</div> -->
+                                <span id="new-price-<?php echo $items['rowid'] ?>"><?php echo number_format($items['subtotal'],2); ?> $</span>
                             </td>
                             <td class="action">
                                 <!-- <a href="#">Delete item</a> -->
 
-                                <button type="button" id="'.$items['rowid'].'" class="romove_cart btn btn-danger btn-sm">X</button>
+                                <button type="button" id="<?php echo $items['rowid'];?>" class="romove_cart btn btn-danger btn-sm">X</button>
                             </td>
                         </tr>
 
@@ -163,11 +224,11 @@ header("location: login");
                         <tr>
                             <td colspan="2" rowspan="2"></td>
                             <td colspan="3">Total products (tax incl.)</td>
-                            <td colspan="2"><?php echo number_format($this->cart->total(),2); ?> $</td>
+                            <td colspan="2" id="total-n-tax"><?php echo number_format($this->cart->total(),2); ?> $</td>
                         </tr>
                         <tr>
                             <td colspan="3"><strong>Total</strong></td>
-                            <td colspan="2"><strong><?php echo number_format($this->cart->total(),2); ?> $</strong></td>
+                            <td colspan="2"><strong id="total-price"><?php echo number_format($this->cart->total(),2); ?> $</strong></td>
                         </tr>
                     </tfoot>    
                 </table>
@@ -846,6 +907,38 @@ function link(link=''){
 
 };
 
+
+function update_cart(rowid) {
+	var old_price = $('#old-price-'+rowid).data('old-price');
+	var qty = $('#qty-'+ rowid).val();
+	var new_price = old_price * qty ;
+
+    var size = $('#size-'+ rowid).val();
+    var color = $('#color-'+ rowid).val();
+
+	//assign
+
+	$('#new-price-'+ rowid).html(new_price.toFixed(2) +' $');
+
+     $.ajax({
+                url : "<?php echo site_url('cart/update_cart/');?>",
+                method : "POST",
+                data : {rowid: rowid,qty: qty, price: old_price,size: size,color: color},
+                success: function(data){
+                    //alert("Hello");
+                    $('#detail_cart').html(data);
+                    $('#count_cart').load("<?php echo site_url('front/load_cart_count');?>");
+                    $('#top_cart_count').load("<?php echo site_url('front/show_count_cart');?>");
+                    
+                    $('#total-n-tax').load("<?php echo site_url('front/show_total_price_cart');?>");
+                    $('#total-price').load("<?php echo site_url('front/show_total_price_cart');?>");
+                }
+            });
+
+}
+
+
+       
     </script>  
 </body>
 </html>

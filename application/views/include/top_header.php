@@ -29,6 +29,7 @@
             <div class="support-link">
                 <a href="#">Services</a>
                 <a href="#">Support</a>
+                <a href="<?php echo site_url()?>ad" class="btn btn-primary">Post Ad</a>
             </div>
 
             <div id="user-info-top" class="user-info pull-right">

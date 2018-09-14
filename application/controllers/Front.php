@@ -186,7 +186,7 @@ class Front extends CI_Controller{
     }
  public function show_total_price_cart()
     {
-    	echo number_format($this->cart->total(),2) .'$' ;
+    	echo number_format($this->cart->total(),2) .' $' ;
    }
 
   public function show_count_cart()
@@ -220,9 +220,9 @@ class Front extends CI_Controller{
 	                    </a>
 	                </div>
 	                <div class="p-right">	                    
-	                    <p>Price:<i class="p-rice">'.number_format($items['price'],2).'$</i></p>
+	                    <p>Price:<i class="p-rice">'.number_format($items['price'],2).' $</i></p>
 	                    <p>Qty: '.$items['qty'].'</p>
-	                    <p>Amount: '.number_format($items['subtotal'],2).'$</p>
+	                    <p>Amount: '.number_format($items['subtotal'],2).' $</p>
 
 	                    
 
@@ -237,7 +237,7 @@ class Front extends CI_Controller{
         $output .= '
 	         <div class="toal-cart">
 	            <span>Total</span>
-	            <span class="toal-price pull-right">'.number_format($this->cart->total(),2).'$</span>
+	            <span class="toal-price pull-right">'.number_format($this->cart->total(),2).' $</span>
 	        </div>
 
          </ul> 
@@ -277,7 +277,7 @@ class Front extends CI_Controller{
      	$output = '';
      	$output .= '
 	        <span class="title">Shopping cart</span>
-                    <span class="total">'.count($this->cart->contents()).' items - '. number_format($this->cart->total(),2) .'$</span>
+                    <span class="total">'.count($this->cart->contents()).' items - '. number_format($this->cart->total(),2) .' $</span>
            <span class="notify notify-left">'.count($this->cart->contents()).'</span>
         ';
      	echo $output;

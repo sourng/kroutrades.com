@@ -9,8 +9,10 @@ class Cart extends CI_Controller {
 		$this->load->helper('url');
 	    $this->load->model('M_Products','mProduct'); 
 		$this->load->model('Cart_model');
-		 $this->load->model('M_category','mCate'); 
-		     $this->load->model('M_image','image');
+		$this->load->model('M_category','mCate'); 
+		$this->load->model('M_image','image');
+		$this->load->model('M_size','size');
+		$this->load->model('M_color','color');
 		
 		if($this->session->userdata['logged_in']==false){
 			redirect('front/login');
@@ -87,8 +89,8 @@ class Cart extends CI_Controller {
 		redirect('cart');
 	}	
 
-	function update_cart(){
- 		foreach($_POST['cart'] as $id => $cart)
+	function update_cart($param1='' , $param2=''){
+ 		/*foreach($_POST['cart'] as $id => $cart)
 		{			
 			$price = $cart['price'];
 			$amount = $price * $cart['qty'];
@@ -96,7 +98,37 @@ class Cart extends CI_Controller {
 			$this->Cart_model->update_cart($cart['rowid'], $cart['qty'], $price, $amount);
 		}
 		
-		redirect('cart');
+		redirect('cart');*/
+
+		$rowid = $_POST['rowid'];
+		$qty = $_POST['qty'];
+		$price = $_POST['price'];
+		$amount = $price * $qty;
+
+		$size = $_POST['size'];
+		$color = $_POST['color'];
+		$sku ='None';
+		$condition ='New';
+
+
+			
+			$data = array(
+				'rowid'   => $rowid,
+				'qty'     => $qty,
+				'price'   => $price,
+				'amount'   => $amount,
+				'options' => array('size' =>$size,
+                                'color' => $color,
+                                'sku' => $sku,
+                                'Condition' => $condition
+                                ),
+			);		
+		
+	
+
+
+		$this->cart->update($data);
+
 	}	
 
 
