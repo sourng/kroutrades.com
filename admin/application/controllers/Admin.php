@@ -379,7 +379,7 @@ class Admin extends CI_Controller {
 
 					if ($this->input->post('save-type') == 'save-new') {
 
-						redirect('admin/category/sub1/add');
+						redirect('admin/category/sub1/add/'.$this->input->post('category'));
 					}else{
 						redirect('admin/category/sub1/list');
 					}
@@ -474,7 +474,8 @@ class Admin extends CI_Controller {
 
 					if ($this->input->post('save-type') == 'save-new') {
 
-						redirect('admin/category/sub2/add');
+						redirect('admin/category/sub2/add/'.$this->input->post('category'));
+
 					}else{
 						redirect('admin/category/sub2/list');
 					}

@@ -46,8 +46,8 @@
                             <option  id="category-0" data-cat-id="0" value="0" >All Categories</option>
                         
                              <?php foreach ($category as $row) :?>
-                                  <option id="category-<?php echo $row['subcat2_id'] ?>" data-cat-id="<?php echo $row['cat_id'] ?>" value="<?php echo $row['subcat2_id'] ?>" 
-                                  	<?php if($row['subcat2_id'] == $this->uri->segment(4)){
+                                  <option id="category-<?php echo $row['sub_cat1_id'] ?>" data-cat-id="<?php echo $row['cat_id'] ?>" value="<?php echo $row['sub_cat1_id'] ?>" 
+                                  	<?php if($row['sub_cat1_id'] == $this->uri->segment(4)){
 	                                  	 echo ' selected';
 	                                  	} ?>>
                                   	<?php echo $row["subcat_name"] ?></option>

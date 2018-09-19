@@ -72,12 +72,81 @@
             </div>
           </div>
 
-         
+          <div class="form-group">
+            <label class="control-label col-sm-4">Modal *</label>
+            <div class="col-sm-4">          
+          
+               <select name="modal" class="form-control required" id="modal">   
 
+                    <option value="camry">Camry</option>
+                    <option value="camry-hybrid">Camry Hybrid</option>
+                    <option value="prius">Prius</option>
+                    <option value="alphard">Alphard</option>
+                    <option value="avalon">Avalon</option>
+                    <option value="avenza">Avenza</option>
+                    <option value="corolla">Corolla</option>
+                    <option value="fortuner">Fortuner</option>
+                    <option value="hiace" ">Hiace</option>
+                    <option value="highlander">Highlander</option>
+                    <option value="highlander-hybrid">Highlander Hybrid</option>
+                    <option value="hilux-rivo">Hilux RIVO</option>
+                    <option value="hilux-vigo">Hilux Vigo</option>
+                    <option value="land-cruiser">Land Cruiser</option>
+                    <option value="land-cruiser-prado">Land Cruiser PRADO</option>
+                    <option value="matrix">Matrix</option>
+                    <option value="rav4">RAV4</option>
+                    <option value="scion">Scion</option>
+                    <option value="sienna">Sienna</option>
+                    <option value="tacoma">Tacoma</option>
+                    <option value="tundra">Tundra</option>
+                    <option value="venza">Venza</option>
+                    <option value="yaris">Yaris</option>
+                    <option value="4runner">4Runner</option>
+                    <option value="celica">Celica</option>
+                    <option value="cressida">Cressida</option>
+                    <option value="echo" >Echo</option>
+                    <option value="ipsum">Ipsum</option>
+                    <option value="paseo">Paseo</option>
+                    <option value="previa">Previa</option>
+                    <option value="sequoia">Sequoia</option>
+                    <option value="solara">Solara</option>
+                    <option value="supra" ">Supra</option>
+                    <option value="t100" >T100</option>
+                    <option value="tercel">Tercel</option>
+                    <option value="truck-xtracab-sr5">Truck Xtracab SR5</option>
+                    <option value="tundramax">TundraMax</option>
+                    <option value="xtra" >Xtra</option>
+                    <option value="other" ">Other - ផ្សេងៗ</option>
+               </select>
+            </div>
+          </div>
+
+            <div class="form-group">
+            <label class="control-label col-sm-4">Year *</label>
+            <div class="col-sm-2">          
+          
+               <select name="year" class="form-control required" id="year">   
+                  <?php for ($y=2019; $y >=1990 ; $y--) { ?>
+                      <option value="<?php echo $y ?>"><?php echo $y ?></option>
+                  <?php } ?>
+               </select>
+            </div>
+          </div>
 
           <div class="form-group">
-            <label class="control-label col-sm-4">Condition *</label>
+            <label class="control-label col-sm-4">Tax Type *</label>
             <div class="col-sm-4">          
+          
+               <select name="tax_type" class="form-control required" id="tax_type">   
+                  <option value="Tax Paper">Tax Paper</option> 
+                  <option value="Plate Number">Plate Number</option> 
+               </select>
+            </div>
+          </div>
+
+           <div class="form-group">
+            <label class="control-label col-sm-4">Condition *</label>
+            <div class="col-sm-2">          
           
                <select name="condition" class="form-control required" id="condition">   
                   <option value="New">New</option> 
@@ -162,7 +231,7 @@
           <div class="form-group">
                     <label class="control-label col-sm-4">Email  *</label>
                     <div class="col-sm-8">          
-                      <input type="Emailail" class="form-control required" name="email" autocomplete="OFF">
+                      <input type="email" class="form-control required" name="email" autocomplete="OFF">
                     </div>
                   </div>
 

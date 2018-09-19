@@ -5,6 +5,7 @@ class M_ad extends CI_Model{
 
         $this->db->select('*');   
         $this->db->from('categories');  
+        $this->db->where('cat_status','Y');  
 
 		$query=$this->db->get();
           
@@ -22,7 +23,7 @@ class M_ad extends CI_Model{
 
         $this->db->select('*');   
         $this->db->from('category_sub1');  
-        $this->db->group_by('cat_id');  
+        $this->db->where('subcate_status','Y');  
 
         $query=$this->db->get();
           
@@ -45,7 +46,8 @@ class M_ad extends CI_Model{
                  $this->db->where('subcat2_id',$subcat2_id);  
             }
        
-         $this->db->group_by('sub_cat1_id');   
+        $this->db->where('subcate_status','Y');  
+         //$this->db->group_by('sub_cat1_id');   
 
         $query=$this->db->get();
           
@@ -75,4 +77,23 @@ class M_ad extends CI_Model{
             }
     }
 	
+
+ function get_provinces(){  
+
+        $this->db->select('*');   
+        $this->db->from('op_provinces'); 
+        $query=$this->db->get();
+          
+            if ($query->num_rows()>0) {
+                foreach ($query->result_array() as $row) {
+                    $data[]=$row;
+                }
+                return $data;
+            }else{
+                return false;
+            }
+    }
+
+
+
 }

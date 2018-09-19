@@ -9,6 +9,7 @@ class Ad extends CI_Controller{
 		    $this->load->model('M_search','search'); 
 		    $this->load->model('M_ad','ad'); 
 
+
             $this->load->library(['form_validation', 'encryption','session']);
 
             // Load session library
@@ -34,21 +35,73 @@ class Ad extends CI_Controller{
 		$ad_form = $this->ad->get_ad_form($param1);
 		$data['form_name'] = $ad_form[0]['form_name'];
 
+		$data['provinces'] = $this->ad->get_provinces();
+
 		$this->load->view('front/ad/ad_form_',$data);
 
 	}
 
 	public function post($param1='', $param2=''){
 
+
+
+		$data3['comp_name'] = $this->input->post('name');
+		$data3['comp_phone'] = $this->input->post('phone');
+		$data3['comp_email'] = $this->input->post('email');
+		$data3['comp_province'] = $this->input->post('provinces');
+		$data3['comp_location'] = $this->input->post('location');
+
+		$this->db->insert('company',$data3);
+
+		  $this->session->set_userdata('log_admin', '0');
+                                $this->session->set_userdata('log_company', '1');
+                                $this->session->set_userdata('account_type', 'company');
+                                $this->session->set_userdata('email', $this->input->post('email'));
+                                // $this->session->set_userdata('password', $password);
+                                 $this->session->set_userdata('id', $this->db->insert_id());
+                                 $this->session->set_userdata('name', $this->input->post('name'));
+                                // $this->session->set_userdata('logo', $row['comp_logo']);
+
+
+        $company_id = $this->db->insert_id();			
+
+        //End company
+
+
+
 		$cat_id = $this->ad->get_ad_form($param1);
 
 		$data['cat_id'] = $cat_id[0]['cat_id'];
 		$data['subcat2_id'] = $param1;
+
+		
 		$data['pro_name'] = $this->input->post('title');
-		//$data[''] = $this->input->post('brand');
+
+
+		// For ad_vehicles
+
+		//$data[''] = $this->input->post('modal');
+		//$data[''] = $this->input->post('year');
+		//$data[''] = $this->input->post('tax_type');
+
+
+		// For ad_house
+
+		//$data[''] = $this->input->post('bedroom');
+		//$data[''] = $this->input->post('bathroom');
+		//$data[''] = $this->input->post('facing');
+		//$data[''] = $this->input->post('size');
+
+		// No condition
+
+
+		
+
+
 		$data['condition'] = $this->input->post('condition');
 		$data['pro_price'] = $this->input->post('price');
 		$data['pro_description'] = $this->input->post('description');
+		$data['company_id'] = $company_id;
 
 		$pro_image_name = uniqid(time(), true).'.jpg';
 
@@ -58,38 +111,38 @@ class Ad extends CI_Controller{
 
 		$pro_id = $this->db->insert_id();		
 
-		$pro_image_name1 = $pro_id .'-'. uniqid(time(), true).'.jpg';	
 
-		move_uploaded_file($_FILES['photo']['tmp_name'],'./uploads/product_features/' . $pro_image_name);
+		move_uploaded_file($_FILES['feature']['tmp_name'],'./uploads/product_features/' . $pro_image_name);
 
-		copy('./uploads/product_features/' . $pro_image_name, './uploads/product_images/' .$pro_image_name1);
+		//copy('./uploads/product_features/' . $pro_image_name, './uploads/product_images/' .$pro_image_name);
+
+		//End Product
 
 
+				$images = $_FILES['images']['tmp_name'];
+				//$data['pro_image']= '';
+				foreach ($images as $image => $value) {	
+					$pro_image_name = $pro_id .'-'. uniqid(time(), true).'.jpg';	
+					$data2['pro_id'] = $pro_id ;	
+					$data2['pro_image'] = $pro_image_name;	
+					$data2['pro_img_position'] = $image;
+
+						if($value <> ''){
+						$this->db->insert('products_images',$data2);
+						move_uploaded_file($images[$image],'./uploads/product_images/' . $pro_image_name);				
+					}
+				}
+		
+		//End Product_image
 
 
 		
-		
 
-		$data2['pro_id'] = $pro_id ;	
-		$data2['pro_image'] = $pro_image_name1;	
-		$data2['pro_img_position'] = 0;
-
-		$this->db->insert('products_images',$data2);
+	
+				
 
 
-		
-
-
-		$data3['comp_name'] = $this->input->post('name');
-		$data3['comp_phone'] = $this->input->post('phone');
-		$data3['comp_email'] = $this->input->post('email');
-		//$data3[''] = $this->input->post('province');
-		$data3['comp_location'] = $this->input->post('location');
-
-		$this->db->insert('company',$data3);
-
-		
-		 redirect('detail/'.$pro_id);
+		 redirect('/admin/index.php?set_password');
 
 	}
 

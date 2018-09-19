@@ -25,7 +25,7 @@
 	</style>
 
 </head>
-<body class="home search">
+<body class="home ">
 <!-- TOP BANNER -->
 <!--<div id="top-banner" class="top-banner">
     <div class="bg-overlay"></div>
@@ -100,15 +100,9 @@
 <script type="text/javascript">
   $(document).ready(function() {
 
-
-
-	$("input#price").change(function (e) {
-	 	if($(this).val() < 1){
-	 		$(this).val(0);
-	 	};
-	})
-
 $("input#price").keypress(number);
+$("input#phone").keypress(number);
+
   function number(event) {
       var key = window.event ? event.keyCode : event.which;
       if (event.keyCode === 8 || event.keyCode === 46) {
@@ -121,9 +115,21 @@ $("input#price").keypress(number);
   };
 
   	$('#condition').val([]);
+    $('#provinces').val([]);
+    $('#modal').val([]);
+    $('#year').val([]);
+    $('#tax_type').val([]);
+    $('#bedroom').val([]);
+    $('#bathroom').val([]);
+    $('#facing').val([]);
+    $('#experience').val([]);
+    
     $('#btn_submit').click(function(e) {
         var isValid = true;
-        $('input.required,textarea.required,select.required').each(function() {
+        $('input.required,textarea.required,select.required').each(function(e) {
+        	
+
+
             if ($.trim($(this).val()) == '') {
                 isValid = false;
                 $(this).css({
@@ -143,7 +149,27 @@ $("input#price").keypress(number);
         else 
            $('#form').submit();
     });
+
+
+	  $(document).on('click','img.img', function(e){
+
+	  	 $("#input-"+e.target.id ).trigger('click');
+
+	  })
+
+
 });
+
+
+   function loadFile (event,id) {
+    var output = document.getElementById('img-image-'+id);
+    output.src = URL.createObjectURL(event.target.files[0]); 
+     
+  };
+
+$(document).ready(function() {
+		 	 $('html, body').animate({scrollTop:140},'50');
+		 	})
 </script>
 	
 

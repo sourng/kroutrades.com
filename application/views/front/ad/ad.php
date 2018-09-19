@@ -177,13 +177,25 @@
 	<script src="<?php echo base_url() ;?>public/scripts/jquery.taxonomyBrowser.js"></script>
 	<script src="<?php echo base_url() ;?>public/scripts/jquery.taxonomyBrowser.keys.js"></script>
 	<script>
-		$(function(){
-			
-			$('.miller-container').taxonomyBrowser({
-			  columns:3
+		 $(document).ready(function() {
+		 	 $('html, body').animate({scrollTop:140},'50');
+			$(function(){
+				
+				$('.miller-container').taxonomyBrowser({
+				  columns:3
+				});
+				
 			});
-			
-		});
+
+
+		  $(document).on('click','span.title',function (){
+		  
+
+				 $('html, body').animate({scrollTop:140},'50');
+				})
+
+		})
+
 	</script>
 
 

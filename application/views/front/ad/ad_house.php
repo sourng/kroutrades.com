@@ -74,10 +74,60 @@
 
          
 
+            <div class="form-group">
+            <label class="control-label col-sm-4">Bedroom *</label>
+            <div class="col-sm-2">          
+          
+               <select name="bedroom" class="form-control required" id="bedroom">   
+                  <?php for ($i=1; $i <6 ; $i++) { ?>
+                      <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                  <?php } ?>
+               </select>
+            </div>
+          </div>
+
+            <div class="form-group">
+            <label class="control-label col-sm-4">Bathroom *</label>
+            <div class="col-sm-2">          
+          
+               <select name="bathroom" class="form-control required" id="bathroom">   
+                  <?php for ($i=1; $i <6 ; $i++) { ?>
+                      <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                  <?php } ?>
+               </select>
+            </div>
+          </div>
+
+
+           <div class="form-group">
+            <label class="control-label col-sm-4">Facing *</label>
+            <div class="col-sm-3">          
+          
+               <select name="facing" class="form-control required" id="facing">   
+              <option value="east" data-value="east">East</option>
+              <option value="north" data-value="north">North</option>
+              <option value="northeast" data-value="northeast">Northeast</option>
+              <option value="northwest" data-value="northwest">Northwest</option>
+              <option value="south" data-value="south">South</option>
+              <option value="southeast" data-value="southeast">Southeast</option>
+              <option value="southwest" data-value="southwest">Southwest</option>
+              <option value="west" data-value="west">West</option>
+               </select>
+            </div>
+          </div>
+
+
 
           <div class="form-group">
+            <label class="control-label col-sm-4">Size(m²)</label>
+            <div class="col-sm-8">          
+              <input type="text" class="form-control required" name="size" autocomplete="OFF">
+            </div>
+          </div>
+
+           <div class="form-group">
             <label class="control-label col-sm-4">Condition *</label>
-            <div class="col-sm-4">          
+            <div class="col-sm-2">          
           
                <select name="condition" class="form-control required" id="condition">   
                   <option value="New">New</option> 
@@ -162,7 +212,7 @@
           <div class="form-group">
                     <label class="control-label col-sm-4">Email  *</label>
                     <div class="col-sm-8">          
-                      <input type="Emailail" class="form-control required" name="email" autocomplete="OFF">
+                      <input type="email" class="form-control required" name="email" autocomplete="OFF">
                     </div>
                   </div>
 

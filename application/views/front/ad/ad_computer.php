@@ -162,7 +162,7 @@
           <div class="form-group">
                     <label class="control-label col-sm-4">Email  *</label>
                     <div class="col-sm-8">          
-                      <input type="Emailail" class="form-control required" name="email" autocomplete="OFF">
+                      <input type="email" class="form-control required" name="email" autocomplete="OFF">
                     </div>
                   </div>
 

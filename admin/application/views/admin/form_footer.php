@@ -1,6 +1,6 @@
-		
 
-		
+
+
 		<!-- Vendor -->
 		<script src="<?php echo base_url() ?>public/assets/vendor/jquery/jquery.js"></script>
 		<script src="<?php echo base_url() ?>public/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
@@ -202,7 +202,18 @@
     
 
   $('#company').val([]);
-  $('#category').val([]);
+     <?php 
+
+     $cat_select_index = $this->uri->segment(5);
+
+      if ($cat_select_index == '')   
+        
+        echo "$('#category').val([]);";
+                                                                                        
+                                                                                   
+                                                                                   
+  ?>
+
 
 
   $('#category_icon').change(function() {
@@ -210,6 +221,8 @@
   })
 
 $(document).ready(function() {
+
+  
      $('#icon_view').html( $('#category_icon').val());
 })
 
@@ -235,3 +248,4 @@ function email_(email) {
       })
   }; 
 </script>
+

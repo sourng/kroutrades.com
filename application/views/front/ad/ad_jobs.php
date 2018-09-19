@@ -66,7 +66,7 @@
 
 
           <div class="form-group">
-            <label class="control-label col-sm-4">Title *</label>
+            <label class="control-label col-sm-4">Job Title *</label>
             <div class="col-sm-8">          
               <input type="text" class="form-control required" name="title" autocomplete="OFF">
             </div>
@@ -74,21 +74,21 @@
 
          
 
-
-          <div class="form-group">
-            <label class="control-label col-sm-4">Condition *</label>
-            <div class="col-sm-4">          
+            <div class="form-group">
+            <label class="control-label col-sm-4">Experience *</label>
+            <div class="col-sm-3">          
           
-               <select name="condition" class="form-control required" id="condition">   
-                  <option value="New">New</option> 
-                  <option value="Used">Used</option> 
+               <select name="experience" class="form-control required" id="experience">   
+                  <?php for ($i=1; $i <=10 ; $i++) { ?>
+                      <option value="<?php echo $i ?>"><?php echo $i ?> Year+</option>
+                  <?php } ?>
                </select>
             </div>
           </div>
 
 
           <div class="form-group">
-                    <label class="control-label col-sm-4">Price *</label>
+                    <label class="control-label col-sm-4">Salary Start From *</label>
                     <div class="col-sm-4">          
                       <input type="number" min="0" class="form-control required" name="price" id="price" autocomplete="OFF">
                     </div>
@@ -113,7 +113,7 @@
                     </div>
                   </div>
 
-            <div class="form-group">
+         <!--    <div class="form-group">
                     <label class="control-label col-sm-4">Add Image * </label>
                     <div   class="image_bg col-sm-8" >          
            
@@ -140,7 +140,7 @@
               
 
                   </div>
-            </div>
+            </div> -->
                
 
                      <div class="form-group">
@@ -162,7 +162,7 @@
           <div class="form-group">
                     <label class="control-label col-sm-4">Email  *</label>
                     <div class="col-sm-8">          
-                      <input type="Emailail" class="form-control required" name="email" autocomplete="OFF">
+                      <input type="email" class="form-control required" name="email" autocomplete="OFF">
                     </div>
                   </div>
 

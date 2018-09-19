@@ -37,6 +37,7 @@
    
 </style>
 
+
 <?php echo form_open('admin/category/sub2/add/save' , array('id' => 'form','class' => 'form-horizontal validatable','target'=>'_top', 'enctype' => 'multipart/form-data'));?>
 
 <section class="panel">
@@ -64,6 +65,16 @@
 
                                                                     <?php foreach ($category_sub1 as $row) :?>
                                                                         <option value="<?php echo $row['sub_cat1_id'] ?>" 
+                                                                                <?php 
+
+                                                                                  $cat_select_index = $this->uri->segment(5);
+
+                                                                                    if ($cat_select_index == $row['sub_cat1_id'])  echo "selected";
+                                                                                       
+                                                                                   
+                                                                                   
+                                                                                ?>
+
                                                                         ><?php echo $row['subcat_name'] ?></option>
                                                                     <?php endforeach;?>
                                                                     

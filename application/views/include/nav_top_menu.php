@@ -38,7 +38,7 @@
                                         foreach ($menu_cat_sub2 as $nav2) {
                                             if($nav2['sub_cat1_id']==$nav_sub1['sub_cat1_id']){
                                                 ?>
-                                                 <li><a href="<?php echo site_url(); ?>front/category/<?php echo $nav2['subcat2_id']; ?>/<?php echo $nav2['sub_cat1_id'];  ?>"><?php echo $nav_sub1['subcat_name']; ?></a></li>
+                                                 <li><a href="<?php echo site_url(); ?>front/category/<?php echo $nav2['subcat2_id']; ?>/<?php echo $nav2['sub_cat1_id'];  ?>"><?php echo $nav2['subcat_name']; ?></a></li>
                                                 <?php
                                             }
                                         }

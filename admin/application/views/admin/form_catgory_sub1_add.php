@@ -64,6 +64,17 @@
 
                                                                     <?php foreach ($category as $row) :?>
                                                                         <option value="<?php echo $row['cat_id'] ?>" 
+
+                                                                             <?php 
+
+                                                                                  $cat_select_index = $this->uri->segment(5);
+
+                                                                                    if ($cat_select_index == $row['cat_id'])  echo "selected";
+                                                                                       
+                                                                                   
+                                                                                   
+                                                                                ?>
+                                                                            
                                                                         ><?php echo $row['pro_cat_name'] ?></option>
                                                                     <?php endforeach;?>
                                                                     

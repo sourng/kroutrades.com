@@ -263,4 +263,7 @@ class Company extends CI_Controller {
         $this->load->view('index',$page_data);
     }
 
+
+
+
 }

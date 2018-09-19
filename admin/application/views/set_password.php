@@ -51,26 +51,14 @@
 								<?php if (@$_GET['company'] == 1) { echo "selected" ;} ?> 
 					<div class="panel-body">
 						
-	<?php echo form_open('login/signin/log' , array('id' => 'form','class' => 'form-horizontal validatable','target'=>'_top', 'enctype' => 'multipart/form-data'));?>
+	<?php echo form_open('set_password/login' , array('id' => 'form','class' => 'form-horizontal validatable','target'=>'_top', 'enctype' => 'multipart/form-data'));?>
 
-							<div class="form-group mb-lg">
-								<label>Account Type</label>
-								<div class="input-group input-group-icon">
-									 <select name="account" id="account" class="form-control valid " required  data-plugin-selectTwo>
-
-				                         	<option value="admin">Admin</option> 
-				                         	<option value="company" >Company</option> 
-				                                                                    
-				                    	 </select>
-									
-								</div>
-							</div>	
 
 
 							<div class="form-group mb-lg">
-								<label>Username</label>
+								<label>Password</label>
 								<div class="input-group input-group-icon">
-									<input name="email" type="email" class="form-control input-lg" />
+									<input name="password" type="password" id="password" class="form-control input-lg" />
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-user"></i>
@@ -81,11 +69,11 @@
 
 							<div class="form-group mb-lg">
 								<div class="clearfix">
-									<label class="pull-left">Password</label>
+									<label class="pull-left">Password Confirm</label>
 									<a href="pages-recover-password.html" class="pull-right">Lost Password?</a>
 								</div>
 								<div class="input-group input-group-icon">
-									<input name="password" type="password" class="form-control input-lg" />
+									<input name="password_confirm" type="password" class="form-control input-lg" id="password_confirm" />
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-lock"></i>
@@ -102,7 +90,7 @@
 									</div>
 								</div>
 								<div class="col-sm-4 text-right">
-									<button type="submit" class="btn btn-primary hidden-xs">Sign In</button>
+									<button type="submit" class="btn btn-primary hidden-xs" id="btn-submit">Save</button>
 									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>
 									<!-- <a href="<?php echo site_url() ?>admin/dashboard" class="btn btn-primary">Sign In</a> -->
 								</div>
@@ -151,6 +139,35 @@
 
 		<script type="text/javascript">
 			$('#account').val([]);
+
+
+			$('#btn-submit').click(function(e) {
+				var password = $('#password').val();
+				var password_confirm = $('#password_confirm').val();
+
+				if (password == '') {
+
+					$('#password').css({
+                    "border": "1px solid red",
+                    "background": "#FFCECE"
+                });
+					 e.preventDefault();
+				}else if(password_confirm == ''){
+					$('#password_confirm').css({
+                    "border": "1px solid red",
+                    "background": "#FFCECE"
+
+                });
+					 e.preventDefault();
+				}else{
+
+					if(password == password_confirm){
+						$('#form').submit();
+					}else{
+						alert("Password not macth!");
+					}
+				}
+			})
 		</script>
 	</body>
 </html>
