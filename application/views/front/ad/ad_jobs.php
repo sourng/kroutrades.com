@@ -90,7 +90,7 @@
           <div class="form-group">
                     <label class="control-label col-sm-4">Salary Start From *</label>
                     <div class="col-sm-4">          
-                      <input type="number" min="0" class="form-control required" name="price" id="price" autocomplete="OFF">
+                      <input type="number" min="0" class="form-control required" name="salary" id="price" autocomplete="OFF">
                     </div>
                   </div>
 

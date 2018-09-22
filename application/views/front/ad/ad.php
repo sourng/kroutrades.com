@@ -20,6 +20,13 @@
 .miller--terms--container,.miller--placeholder__background{
 	margin:0px;
 	}
+	html {
+    font-family: Arial, Helvetica;
+    color: #818285;
+    line-height: 1.4;
+    width: 100%;
+    margin: 0 auto;
+}
 	</style>
 
 </head>

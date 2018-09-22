@@ -125,16 +125,7 @@
             </div>
           </div>
 
-           <div class="form-group">
-            <label class="control-label col-sm-4">Condition *</label>
-            <div class="col-sm-2">          
           
-               <select name="condition" class="form-control required" id="condition">   
-                  <option value="New">New</option> 
-                  <option value="Used">Used</option> 
-               </select>
-            </div>
-          </div>
 
 
           <div class="form-group">

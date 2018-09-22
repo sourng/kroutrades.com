@@ -73,33 +73,45 @@ class Ad extends CI_Controller{
 
 		$data['cat_id'] = $cat_id[0]['cat_id'];
 		$data['subcat2_id'] = $param1;
+ 		$data['pro_name'] = $this->input->post('title');
 
 		
-		$data['pro_name'] = $this->input->post('title');
+		if ($cat_id[0]['cat_id'] == 1) { //ad_mobile
 
+			$data['condition'] = $this->input->post('condition');
+			$data['pro_price'] = $this->input->post('price');
+			
+		}elseif ($cat_id[0]['cat_id'] == 2) { // ad_computer
 
-		// For ad_vehicles
-
-		//$data[''] = $this->input->post('modal');
-		//$data[''] = $this->input->post('year');
-		//$data[''] = $this->input->post('tax_type');
-
-
-		// For ad_house
-
-		//$data[''] = $this->input->post('bedroom');
-		//$data[''] = $this->input->post('bathroom');
-		//$data[''] = $this->input->post('facing');
-		//$data[''] = $this->input->post('size');
-
-		// No condition
-
+			$data['condition'] = $this->input->post('condition');
+			$data['pro_price'] = $this->input->post('price');
 
 		
+		}elseif ($cat_id[0]['cat_id'] == 4) { // ad_vehicles
+
+			$data['modal'] = $this->input->post('modal');
+			$data['year'] = $this->input->post('year');
+			$data['tax_type'] = $this->input->post('tax_type');
+			$data['pro_price'] = $this->input->post('price');
+			$data['condition'] = $this->input->post('condition');
+
+		}elseif ($cat_id[0]['cat_id'] == 5) { // ad_house
+
+			$data['bedroom'] = $this->input->post('bedroom');
+			$data['bathroom'] = $this->input->post('bathroom');
+			$data['facing'] = $this->input->post('facing');
+			$data['size'] = $this->input->post('size');
+			$data['pro_price'] = $this->input->post('price');
+
+		}elseif ($cat_id[0]['cat_id'] == 6) { // ad_jobs
+
+			$data['experience'] = $this->input->post('experience');
+			$data['salary'] = $this->input->post('salary');
 
 
-		$data['condition'] = $this->input->post('condition');
-		$data['pro_price'] = $this->input->post('price');
+		}
+
+		
 		$data['pro_description'] = $this->input->post('description');
 		$data['company_id'] = $company_id;
 

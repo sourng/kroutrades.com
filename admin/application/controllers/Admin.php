@@ -470,11 +470,13 @@ class Admin extends CI_Controller {
 					$data['subcat_name'] = $this->input->post('category_name');
 					$data['subcat_icon'] = $this->input->post('category_icon');
 
-					$this->db->insert('category_sub2',$data);
+					//$this->db->insert('category_sub2',$data);
 
 					if ($this->input->post('save-type') == 'save-new') {
 
-						redirect('admin/category/sub2/add/'.$this->input->post('category'));
+						print_r($data);
+
+						//redirect('admin/category/sub2/add/'.$this->input->post('category'));
 
 					}else{
 						redirect('admin/category/sub2/list');
